@@ -99,5 +99,131 @@ class Learndash_Wpforo_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/learndash-wpforo-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+	
+	/*
+	 *
+	 *
+	 */
+	public function ldwpforo_display_course_selector(){
+		
+		$courses = $this->ld_get_course_list();
+		$forumid = $_GET['id'];
+		
+		$ld_forum_settings = get_option( 'ld_forum_' . $forumid , $_REQUEST['ld_forum']);
+		
+		$associated_courses     = $ld_forum_settings['ld_course_selector_dd'];
+		$limit_post_access      = $ld_forum_settings['ld_post_limit_access'];
+		$allow_forum_view       = $ld_forum_settings['ld_allow_forum_view'];
+		$message_without_access = ( $ld_forum_settings['ld_message_without_access'] != '') ? $ld_forum_settings['ld_message_without_access'] : __( 'This forum is restricted to members of the associated course(s).', 'learndash-bbpress' );
+		$selected = null;		
+		?>
+		<div id="ldwpforo_course_selector-sortables" style="display:none;">
+			<div  id="ldwpforo_course_settings" class="meta-box-sortables ui-sortable">
+				<div id="ldwpforo_course_selector" class="postbox ">			
+					<div class="handlediv" title="Click to toggle"><br></div>
+					<h2 class="hndle ui-sortable-handle"><span><?php _e('LearnDash wpForo Settings','learndash-wpforo');?></span></h2>
+					<div class="inside">
+						<script>
+							jQuery( document ).ready( function( $ ){
+								$( '#ld_clearcourse' ).click( function( e ) {
+									e.preventDefault();
+									$( "#ld_course_selector_dd option:selected" ).each( function() {
+											$( this ).removeAttr( 'selected' ); //or whatever else
+									} );
+								} );
+							});
+						</script>
+					
+						<table class="form-table">
+							<tbody>
+							<tr>
+							<td>
+								<label for="ld_course_selector_dd"><strong><?php _e( 'Associated Course(s)', 'learndash-wpforo' ); ?>: </strong></label>
+								<br>
+								<select name='ld_forum[ld_course_selector_dd][]' size="4" id='ld_course_selector_dd' multiple="multiple">
+									<optgroup label="<?php _e( 'Select Courses', 'learndash-wpforo' ); ?>">
+									<?php if(is_array($courses)){
+									foreach( $courses as $course ){
+										$selected = null;
+										if(is_array($associated_courses) && in_array($course->ID, $associated_courses)){
+											$selected = "selected";
+										} ?>
+										<option value="<?php echo $course->ID; ?>" <?php echo $selected; ?>><?php echo get_the_title($course->ID); ?></option>
+									<?php } } ?>
+									</optgroup>
+								</select>
+								<br>
+								<a href="" id="ld_clearcourse" class="button" style="margin-top: 10px;"><?php _e( 'Clear All', 'learndash-wpforo' ); ?></a>
+							</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="ld_post_limit_access"><strong><?php _e( 'Post Limit Access', 'learndash-wpforo' ); ?>: </strong></label>
+									<select name="ld_forum[ld_post_limit_access]" id="ld_post_limit_access">
+										<option value="all" <?php selected( 'all', $limit_post_access, true ); ?>><?php _e( 'All', 'learndash-wpforo' ); ?></option>
+										<option value="any" <?php selected( 'any', $limit_post_access, true ); ?>><?php _e( 'Any', 'learndash-wpforo' ); ?></option>
+									</select>
+									<p class="desc"><?php _e( 'If you select ALL, then users must have access to all of the associated courses in order to post.', 'learndash-wpforo' ); ?></p>
+									<p class="desc"><?php _e( 'If you select ANY, then users only need to have access to any one of the selected courses in order to post.', 'learndash-wpforo' ); ?></p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="ld_message_without_access"><strong><?php _e( 'Message shown to users without access', 'learndash-wpforo' ); ?>: </strong></label>
+									<br>
+									<textarea cols="100" rows="5" name="ld_forum[ld_message_without_access]"><?php echo esc_attr( $message_without_access ); ?></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="ld_allow_forum_view"><strong><?php _e( 'Forum View', 'learndash-wpforo' ); ?>: </strong></label>
+									<br>
+									<input type="hidden" name="ld_forum[ld_allow_forum_view]" value="0">
+									<input type="checkbox" name="ld_forum[ld_allow_forum_view]" value="1" <?php checked( '1', $allow_forum_view, true ); ?>>&nbsp;<?php _e( 'Check this box to allow non-enrolled users to view forum threads and topics (they will not be able to post replies).', 'learndash-wpforo' ); ?>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php
+	}
+	
+	/*
+	 * Update LearnDash Forum Setting on wpForo settings.
+	 *
+	 */
+	public function ldwpforo_add_edit_ldwpforo_settings(){
+		
+		
+		/* wpForo forum ADD OR EDIT action */
+		if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'wpforo-forums' && ( isset($_REQUEST['action']) && ( $_REQUEST['action'] == 'edit' || $_REQUEST['action'] == 'add' ) ) ) {
+			$forumid = ( isset($_REQUEST['id'])) ? $_REQUEST['id'] : WPF()->db->insert_id ;
+			if ( $forumid != '' && $forumid != 0 ) {
+				update_option( 'ld_forum_' . $forumid , $_REQUEST['ld_forum']);
+			}
+		}
+		/* Delete LD Forum Settings*/
+		if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'wpforo-forums' && isset($_REQUEST['action']) &&  $_REQUEST['action'] == 'del'  ) {
+			$forumid = $_REQUEST['id'] ;
+			delete_option( 'ld_forum_' . $forumid );
+		}
+	}
+	
+	/*
+	 * Get the learndash course list.
+	 *
+	 */
+	public function ld_get_course_list(){
+		$args = array(
+		'posts_per_page'   => -1,
+		'post_type'        => 'sfwd-courses',
+		'post_status'      => 'publish');
+		
+		$courses = get_posts( $args );
+		return $courses;
+	}
 
 }

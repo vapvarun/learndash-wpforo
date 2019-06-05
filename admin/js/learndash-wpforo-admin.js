@@ -28,5 +28,14 @@
 	 * Although scripts in the WordPress core, Plugins and Themes may be
 	 * practising this, we should strive to set a better example in our own work.
 	 */
+	 
+	$( document ).ready(function() {
+		var ldwpforo_settings = $('#ldwpforo_course_selector-sortables').html();
+		if ( typeof ldwpforo_settings !== 'undefined' ) {
+			$('body.forums_page_wpforo-forums #postbox-container-2 #normal-sortables').append(ldwpforo_settings);
+			$('#ldwpforo_course_selector-sortables').hide();
+		}
+		
+	});
 
 })( jQuery );
