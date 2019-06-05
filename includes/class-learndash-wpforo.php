@@ -173,6 +173,8 @@ class Learndash_Wpforo {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wpforo_wpftpl', $plugin_public, 'learndash_wpforo_wpftpl' );
+		$this->loader->add_action( 'wpforo_footer_hook', $plugin_public, 'learndash_wpforo_footer_hook' );
 
 	}
 

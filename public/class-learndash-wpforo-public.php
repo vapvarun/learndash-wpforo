@@ -100,4 +100,98 @@ class Learndash_Wpforo_Public {
 
 	}
 
+	public function learndash_wpforo_wpftpl($template){
+
+		if (strpos( $template,"topic.php")) {
+			$forum = WPF()->current_object['forum'] ;
+			$forumid = $forum['forumid'];
+
+			$ld_forum_info = get_option( 'ld_forum_' . $forumid );
+			$associated_courses = $ld_forum_info['ld_course_selector_dd'];
+			$allow_post = $ld_forum_info['ld_post_limit_access'];
+			$allow_forum_view = $ld_forum_info['ld_allow_forum_view'];
+			$message_without_access = $ld_forum_info['ld_message_without_access'];
+
+			$has_access = true;
+			$user_id = get_current_user_id();
+			if ( is_array( $associated_courses ) && ! empty( $associated_courses ) ) {
+				$has_access = true;
+
+				foreach( $associated_courses as $associated_course ) {
+					// Default expected value of $allow_post == 'all'
+					if ( $allow_post == 'all' ) {
+						if ( ! sfwd_lms_has_access( $associated_course, $user_id ) || ! is_user_logged_in() ) {
+							$has_access = false;
+							break;
+						}
+					} else {
+						if ( sfwd_lms_has_access( $associated_course, $user_id ) && is_user_logged_in() ) {
+							$has_access = true;
+							break;
+						} else {
+							$has_access = false;
+						}
+					}
+				}
+				if ( $allow_forum_view == '1' ) {
+					$has_access = true;
+				}
+			}
+
+			if ( $has_access === false ) {
+				$template = LEARNDASH_WPFORO_DIR_PATH . '/wpf-themes/topic-without-access.php';
+			}
+		}
+		return $template;
+	}
+
+	public function learndash_wpforo_footer_hook(){
+		if( in_array(WPF()->current_object['template'], array('post', 'topic')) ){
+
+			$forum = WPF()->current_object['forum'];			
+			$forumid = $forum['forumid'];
+			$ld_forum_info = get_option( 'ld_forum_' . $forumid );
+			$associated_courses = $ld_forum_info['ld_course_selector_dd'];
+			$allow_post = $ld_forum_info['ld_post_limit_access'];
+			$allow_forum_view = $ld_forum_info['ld_allow_forum_view'];
+			$message_without_access = $ld_forum_info['ld_message_without_access'];
+
+			$topic_has_access = true;
+			$user_id = get_current_user_id();
+			if ( is_array( $associated_courses ) && ! empty( $associated_courses ) ) {
+				$topic_has_access = true;
+
+				foreach( $associated_courses as $associated_course ) {
+					// Default expected value of $allow_post == 'all'
+					if ( $allow_post == 'all' ) {
+						if ( ! sfwd_lms_has_access( $associated_course, $user_id ) || ! is_user_logged_in() ) {
+							$topic_has_access = false;
+							break;
+						}
+					} else {
+						if ( sfwd_lms_has_access( $associated_course, $user_id ) && is_user_logged_in() ) {
+							$topic_has_access = true;
+							break;
+						} else {
+							$topic_has_access = false;
+						}
+					}
+				}
+			}
+			
+			if ( $topic_has_access === false  && ( $allow_forum_view == '1' || $allow_forum_view == '0' ) ) {
+				?>
+				<script>
+				(function( $ ) {
+					'use strict';
+					$('#add_wpftopic').remove();
+					$('#wpf-form-wrapper #wpf-post-create').remove();
+					$('#wpf-form-wrapper #wpf-reply-form-title').html( '<?php esc_html_e('You cannot reply to this topic.', 'learndash-wpforo');?>');
+				})( jQuery );
+				</script>
+				<?php
+			}
+		}
+	}
+
 }
