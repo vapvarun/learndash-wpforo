@@ -109,7 +109,7 @@ class Learndash_Wpforo_Admin {
 		$courses = $this->ld_get_course_list();
 		$forumid = $_GET['id'];
 		
-		$ld_forum_settings = get_option( 'ld_forum_' . $forumid , $_REQUEST['ld_forum']);
+		$ld_forum_settings = get_option( 'ld_forum_' . $forumid);
 		
 		$associated_courses     = $ld_forum_settings['ld_course_selector_dd'];
 		$limit_post_access      = $ld_forum_settings['ld_post_limit_access'];

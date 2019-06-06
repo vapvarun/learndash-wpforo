@@ -193,5 +193,9 @@ class Learndash_Wpforo_Public {
 			}
 		}
 	}
+	
+	public function ld_include_widget_code(){
+		require_once( LEARNDASH_WPFORO_DIR_PATH . '/learnforum-widget.php');
+	}
 
 }
