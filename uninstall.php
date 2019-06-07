@@ -19,13 +19,13 @@
  * For more information, see the following discussion:
  * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
  *
- * @link       https://wbcomdesigns.com/plugins
- * @since      1.0.0
+ * @link  https://wbcomdesigns.com/plugins
+ * @since 1.0.0
  *
- * @package    Learndash_Wpforo
+ * @package Learndash_Wpforo
  */
 
 // If uninstall not called from WordPress, then exit.
-if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
-	exit;
+if (! defined('WP_UNINSTALL_PLUGIN') ) {
+    exit;
 }

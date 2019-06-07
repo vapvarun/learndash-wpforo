@@ -3,8 +3,8 @@
 /**
  * Fired during plugin activation
  *
- * @link       https://wbcomdesigns.com/plugins
- * @since      1.0.0
+ * @link  https://wbcomdesigns.com/plugins
+ * @since 1.0.0
  *
  * @package    Learndash_Wpforo
  * @subpackage Learndash_Wpforo/includes
@@ -20,17 +20,19 @@
  * @subpackage Learndash_Wpforo/includes
  * @author     wbcomdesigns <admin@wbcomdesigns.com>
  */
-class Learndash_Wpforo_Activator {
+class Learndash_Wpforo_Activator
+{
 
-	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
-	 *
-	 * @since    1.0.0
-	 */
-	public static function activate() {
+    /**
+     * Short Description. (use period)
+     *
+     * Long Description.
+     *
+     * @since 1.0.0
+     */
+    public static function activate()
+    {
 
-	}
+    }
 
 }
