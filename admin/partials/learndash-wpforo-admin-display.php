@@ -5,8 +5,8 @@
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
- * @link  https://wbcomdesigns.com/plugins
- * @since 1.0.0
+ * @link       https://wbcomdesigns.com/plugins
+ * @since      1.0.0
  *
  * @package    Learndash_Wpforo
  * @subpackage Learndash_Wpforo/admin/partials
