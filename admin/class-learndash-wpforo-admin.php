@@ -107,7 +107,7 @@ class Learndash_Wpforo_Admin {
 	public function ldwpforo_display_course_selector(){
 		
 		$courses = $this->ld_get_course_list();
-		$forumid = $_GET['id'];
+		$forumid = sanitize_text_field( $_GET['id'] );
 		
 		$ld_forum_settings = get_option( 'ld_forum_' . $forumid);
 		
@@ -199,15 +199,20 @@ class Learndash_Wpforo_Admin {
 		
 		
 		/* wpForo forum ADD OR EDIT action */
-		if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'wpforo-forums' && ( isset($_REQUEST['action']) && ( $_REQUEST['action'] == 'edit' || $_REQUEST['action'] == 'add' ) ) ) {
-			$forumid = ( isset($_REQUEST['id'])) ? $_REQUEST['id'] : WPF()->db->insert_id ;
+		$page     = sanitize_text_field( $_REQUEST['page'] );
+		$action   = sanitize_text_field( $_REQUEST['action'] );
+		$id       = sanitize_text_field( $_REQUEST['id'] );
+		$ld_forum = filter_var_array( $_REQUEST['ld_forum'], FILTER_SANITIZE_STRING );
+
+		if (isset( $page ) && $page == 'wpforo-forums' && ( isset( $action ) && ( $action == 'edit' || $action == 'add' ) ) ) {
+			$forumid = ( isset( $id ) ) ? $id : WPF()->db->insert_id;
 			if ( $forumid != '' && $forumid != 0 ) {
-				update_option( 'ld_forum_' . $forumid , $_REQUEST['ld_forum']);
+				update_option( 'ld_forum_' . $forumid, $ld_forum );
 			}
 		}
 		/* Delete LD Forum Settings*/
-		if (isset($_REQUEST['page']) && $_REQUEST['page'] == 'wpforo-forums' && isset($_REQUEST['action']) &&  $_REQUEST['action'] == 'del'  ) {
-			$forumid = $_REQUEST['id'] ;
+		if ( isset( $page ) && $page == 'wpforo-forums' && isset( $action ) && $action == 'del' ) {
+			$forumid = $id;
 			delete_option( 'ld_forum_' . $forumid );
 		}
 	}
