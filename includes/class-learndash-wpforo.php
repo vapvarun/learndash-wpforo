@@ -156,6 +156,7 @@ class Learndash_Wpforo {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );	
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'ldwpforo_activation_dependency_check' );	
 		$this->loader->add_action( 'forums_page_wpforo-forums', $plugin_admin,'ldwpforo_display_course_selector', 20 );		
 		$this->loader->add_action( 'wpforo_clean_cache_start', $plugin_admin,'ldwpforo_add_edit_ldwpforo_settings', 20 );
 	}

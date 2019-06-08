@@ -7,5 +7,5 @@
 ?>
 
 <div id='wpf-forums' class='wpf-head-bar ld-wpf-forums'>
-	<p class='pre-message'><?php echo $message_without_access; ?></p>
+	<p class='pre-message'><?php echo esc_html($message_without_access); ?></p>
 </div>

@@ -99,27 +99,27 @@ class Learndash_Wpforo_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/learndash-wpforo-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
-	
+
 	/*
 	 *
 	 *
 	 */
 	public function ldwpforo_display_course_selector(){
-		
+
 		$courses = $this->ld_get_course_list();
 		$forumid = sanitize_text_field( $_GET['id'] );
-		
+
 		$ld_forum_settings = get_option( 'ld_forum_' . $forumid);
-		
+
 		$associated_courses     = $ld_forum_settings['ld_course_selector_dd'];
 		$limit_post_access      = $ld_forum_settings['ld_post_limit_access'];
 		$allow_forum_view       = $ld_forum_settings['ld_allow_forum_view'];
 		$message_without_access = ( $ld_forum_settings['ld_message_without_access'] != '') ? $ld_forum_settings['ld_message_without_access'] : __( 'This forum is restricted to members of the associated course(s).', 'learndash-bbpress' );
-		$selected = null;		
+		$selected = null;
 		?>
 		<div id="ldwpforo_course_selector-sortables" style="display:none;">
 			<div  id="ldwpforo_course_settings" class="meta-box-sortables ui-sortable">
-				<div id="ldwpforo_course_selector" class="postbox ">			
+				<div id="ldwpforo_course_selector" class="postbox ">
 					<div class="handlediv" title="Click to toggle"><br></div>
 					<h2 class="hndle ui-sortable-handle"><span><?php _e('LearnDash wpForo Settings','learndash-wpforo');?></span></h2>
 					<div class="inside">
@@ -133,7 +133,7 @@ class Learndash_Wpforo_Admin {
 								} );
 							});
 						</script>
-					
+
 						<table class="form-table">
 							<tbody>
 							<tr>
@@ -190,14 +190,14 @@ class Learndash_Wpforo_Admin {
 		</div>
 		<?php
 	}
-	
+
 	/*
 	 * Update LearnDash Forum Setting on wpForo settings.
 	 *
 	 */
 	public function ldwpforo_add_edit_ldwpforo_settings(){
-		
-		
+
+
 		/* wpForo forum ADD OR EDIT action */
 		$page     = sanitize_text_field( $_REQUEST['page'] );
 		$action   = sanitize_text_field( $_REQUEST['action'] );
@@ -216,7 +216,7 @@ class Learndash_Wpforo_Admin {
 			delete_option( 'ld_forum_' . $forumid );
 		}
 	}
-	
+
 	/*
 	 * Get the learndash course list.
 	 *
@@ -226,9 +226,34 @@ class Learndash_Wpforo_Admin {
 		'posts_per_page'   => -1,
 		'post_type'        => 'sfwd-courses',
 		'post_status'      => 'publish');
-		
+
 		$courses = get_posts( $args );
 		return $courses;
 	}
+	/*
+	 * Check learndash & wpForo Plugin Dependency Check
+	 *
+	 * @since      1.0.0
+	 */
+	public function ldwpforo_activation_dependency_check(){
+		//check if wpForo is active
+		$is_wpforo_active = is_plugin_active('wpforo/wpforo.php');
 
+		//check if learndash is active
+		$is_learndash_active = is_plugin_active('sfwd-lms/sfwd_lms.php');
+
+		if ( !$is_wpforo_active || !$is_learndash_active ) {
+			deactivate_plugins( 'learndash-wpforo/learndash-wpforo.php' );			
+			add_action( 'admin_notices', array( $this, 'ldwpforo_ctivation_dependency_check_notices' ) );
+		}
+	}
+	
+	/*
+	 * Display admin notice for activate wpforo and LearnDash plugin to use this plugin
+	 *
+	 * @since      1.0.0
+	 */	
+	public function ldwpforo_ctivation_dependency_check_notices() {
+		echo "<div class='notice notice-error'><p>" . esc_html__( 'Please activate wpForo & Learndash plugins before activation Learndash wpForo integration.', 'learndash-wpforo' ) . "</p></div>";
+	}
 }
