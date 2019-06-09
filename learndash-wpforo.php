@@ -35,8 +35,22 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'LEARNDASH_WPFORO_VERSION', '1.0.0' );
-define( 'LEARNDASH_WPFORO_DIR_PATH', plugin_dir_path( __FILE__ ) );
+
+if ( ! defined( 'LEARNDASH_WPFORO_VERSION' ) ) {
+	define( 'LEARNDASH_WPFORO_VERSION', '1.0.0' );
+}
+if ( ! defined( 'LEARNDASH_WPFORO_FILE' ) ) {
+	define( 'LEARNDASH_WPFORO_FILE', __FILE__ );
+}
+if ( ! defined( 'LEARNDASH_WPFORO_BASENAME' ) ) {
+	define( 'LEARNDASH_WPFORO_BASENAME', plugin_basename( __FILE__ ) );
+}
+if ( ! defined( 'LEARNDASH_WPFORO_URL' ) ) {
+	define( 'LEARNDASH_WPFORO_URL', plugin_dir_url( __FILE__ ) );
+}
+if ( ! defined( 'LEARNDASH_WPFORO_DIR_PATH' ) ) {
+	define( 'LEARNDASH_WPFORO_DIR_PATH', plugin_dir_path( __FILE__ ) );
+}
 
 /**
  * The code that runs during plugin activation.
@@ -64,7 +78,9 @@ register_deactivation_hook( __FILE__, 'deactivate_learndash_wpforo' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-learndash-wpforo.php';
-
+if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
+	include( dirname( __FILE__ ) . '/edd-license/EDD_LDWPF_Plugin_Updater.php' );
+}
 /**
  * Begins execution of the plugin.
  *
