@@ -44,7 +44,7 @@ add_action('admin_init', 'edd_LDWPF_plugin_updater', 0);
 
 function edd_wbcom_LDWPF_license_menu()
 {
-		add_submenu_page('peepso', __('Learndash wpForo License', 'learndash-wpforo'), __('Learndash wpForo License', 'learndash-wpforo'), 'manage_options', 'edd_LDWPF_license_page', 'edd_wbcom_LDWPF_license_page');
+		add_plugins_page(__('Learndash wpForo License', 'learndash-wpforo'), __('Learndash wpForo License', 'learndash-wpforo'), 'manage_options', 'edd_LDWPF_license_page', 'edd_wbcom_LDWPF_license_page');
 }
 add_action('admin_menu', 'edd_wbcom_LDWPF_license_menu', 50);
 

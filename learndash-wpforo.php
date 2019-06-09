@@ -78,9 +78,7 @@ register_deactivation_hook( __FILE__, 'deactivate_learndash_wpforo' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-learndash-wpforo.php';
-if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
-	include( dirname( __FILE__ ) . '/edd-license/EDD_LDWPF_Plugin_Updater.php' );
-}
+require plugin_dir_path( __FILE__ ) . 'edd-license/edd-plugin-license.php';
 /**
  * Begins execution of the plugin.
  *
