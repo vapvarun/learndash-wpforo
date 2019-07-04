@@ -97,6 +97,12 @@ class Learndash_Wpforo_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/learndash-wpforo-admin.js', array( 'jquery' ), $this->version, false );
+		
+		$wpforo_foums = sanitize_title( __( 'Forums', 'wpforo' ) );		
+		$locale_settings = array(
+			'wpforo_foums_body_class' => $wpforo_foums . '_page_wpforo-forums'
+		);
+		wp_localize_script( $this->plugin_name, 'learndashwpforo', $locale_settings);
 
 	}
 
