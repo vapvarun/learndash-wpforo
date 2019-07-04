@@ -16,7 +16,7 @@
  * Plugin Name:       Learndash wpForo
  * Plugin URI:        https://wbcomdesigns.com
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
+ * Version:           1.1.0
  * Author:            wbcomdesigns
  * Author URI:        https://wbcomdesigns.com/plugins
  * License:           GPL-2.0+
@@ -37,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 if ( ! defined( 'LEARNDASH_WPFORO_VERSION' ) ) {
-	define( 'LEARNDASH_WPFORO_VERSION', '1.0.0' );
+	define( 'LEARNDASH_WPFORO_VERSION', '1.1.0' );
 }
 if ( ! defined( 'LEARNDASH_WPFORO_FILE' ) ) {
 	define( 'LEARNDASH_WPFORO_FILE', __FILE__ );
