@@ -47,7 +47,7 @@ class Learnforum_Widget extends WP_Widget {
 				$forumid = $forum->forumid;
 				$forum_title = $forum->title;
 				$ld_forum_settings = get_option( 'ld_forum_' . $forumid);
-				if ( !empty($ld_forum_settings) && in_array($course_id, $ld_forum_settings['ld_course_selector_dd'] ) ) {
+				if ( !empty($ld_forum_settings['ld_course_selector_dd']) && in_array($course_id, $ld_forum_settings['ld_course_selector_dd'] ) ) {
 					$forum_url = wpforo_forum($forumid, 'url');
 					$associated_forums .="<li><a href='" . esc_url($forum_url). "' >" . esc_html($forum_title) . "</a></li>" ;
 				}
