@@ -40,8 +40,7 @@ class Learnforum_Widget extends WP_Widget {
     	$title = apply_filters( 'widget_title', empty($instance['title']) ? '' : $instance['title'], $instance );
 		$associated_forums = '';
 		$course_id= get_the_ID();
-		$wpforo_forums_get = $wpdb->get_results( "SELECT * FROM wp_wpforo_forums", OBJECT);
-
+		$wpforo_forums_get = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}wpforo_forums", OBJECT);
 		if (!empty($wpforo_forums_get)) :
 
 			foreach( $wpforo_forums_get as $forum){
@@ -51,7 +50,6 @@ class Learnforum_Widget extends WP_Widget {
 				if ( !empty($ld_forum_settings) && in_array($course_id, $ld_forum_settings['ld_course_selector_dd'] ) ) {
 					$forum_url = wpforo_forum($forumid, 'url');
 					$associated_forums .="<li><a href='" . esc_url($forum_url). "' >" . esc_html($forum_title) . "</a></li>" ;
-
 				}
 			}
 		endif;
