@@ -33,6 +33,7 @@
 		var ldwpforo_settings = $('#ldwpforo_course_selector-sortables').html();
 		if ( typeof ldwpforo_settings !== 'undefined' ) {
 			var wpforo_class = learndashwpforo.wpforo_foums_body_class;
+			var wpforo_class = adminpage ;
 			$('body.' + wpforo_class + ' #postbox-container-2 #normal-sortables').append(ldwpforo_settings);
 			$('#ldwpforo_course_selector-sortables').hide();
 		}
