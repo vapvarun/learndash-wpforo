@@ -104,7 +104,11 @@ class Learndash_Wpforo_Public {
 
 		if (strpos( $template,"topic.php")) {
 			$forum = WPF()->current_object['forum'] ;
-			$forumid = $forum['forumid'];
+			if ( isset($forum['forumid']) && $forum['forumid'] != '' ) {
+				$forumid = $forum['forumid'];
+			} else {				
+				return $template;
+			}
 
 			$ld_forum_info = get_option( 'ld_forum_' . $forumid );
 			$associated_courses = $ld_forum_info['ld_course_selector_dd'];

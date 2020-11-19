@@ -204,24 +204,27 @@ class Learndash_Wpforo_Admin {
 	 *
 	 */
 	public function ldwpforo_add_edit_ldwpforo_settings(){
+		
+		if ( isset($_REQUEST['page']) && isset($_REQUEST['action']) && isset($_REQUEST['id']) && isset($_REQUEST['ld_forum']) ) {
 
+			/* wpForo forum ADD OR EDIT action */
+			$page     = sanitize_text_field( $_REQUEST['page'] );
+			$action   = sanitize_text_field( $_REQUEST['action'] );
+			$id       = sanitize_text_field( $_REQUEST['id'] );
+			$ld_forum = filter_var_array( $_REQUEST['ld_forum'], FILTER_SANITIZE_STRING );
 
-		/* wpForo forum ADD OR EDIT action */
-		$page     = sanitize_text_field( $_REQUEST['page'] );
-		$action   = sanitize_text_field( $_REQUEST['action'] );
-		$id       = sanitize_text_field( $_REQUEST['id'] );
-		$ld_forum = filter_var_array( $_REQUEST['ld_forum'], FILTER_SANITIZE_STRING );
-
-		if (isset( $page ) && $page == 'wpforo-forums' && ( isset( $action ) && ( $action == 'edit' || $action == 'add' ) ) ) {
-			$forumid = ( isset( $id ) ) ? $id : WPF()->db->insert_id;
-			if ( $forumid != '' && $forumid != 0 ) {
-				update_option( 'ld_forum_' . $forumid, $ld_forum );
+			if (isset( $page ) && $page == 'wpforo-forums' && ( isset( $action ) && ( $action == 'edit' || $action == 'add' ) ) ) {
+				$forumid = ( isset( $id ) ) ? $id : WPF()->db->insert_id;
+				if ( $forumid != '' && $forumid != 0 ) {
+					update_option( 'ld_forum_' . $forumid, $ld_forum );
+				}
 			}
-		}
-		/* Delete LD Forum Settings*/
-		if ( isset( $page ) && $page == 'wpforo-forums' && isset( $action ) && $action == 'del' ) {
-			$forumid = $id;
-			delete_option( 'ld_forum_' . $forumid );
+			/* Delete LD Forum Settings*/
+			if ( isset( $page ) && $page == 'wpforo-forums' && isset( $action ) && $action == 'del' ) {
+				$forumid = $id;
+				delete_option( 'ld_forum_' . $forumid );
+			}
+		
 		}
 	}
 
