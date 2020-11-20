@@ -141,7 +141,7 @@ class Learndash_Wpforo_Public {
 					$has_access = true;
 				}
 			}
-
+		
 			if ( $has_access === false ) {
 				$template = LEARNDASH_WPFORO_DIR_PATH . '/wpf-themes/topic-without-access.php';
 			}
@@ -150,6 +150,7 @@ class Learndash_Wpforo_Public {
 	}
 
 	public function learndash_wpforo_footer_hook(){
+		
 		if( in_array(WPF()->current_object['template'], array('post', 'topic')) ){
 
 			$forum = WPF()->current_object['forum'];			
@@ -188,9 +189,9 @@ class Learndash_Wpforo_Public {
 				<script>
 				(function( $ ) {
 					'use strict';
-					$('#add_wpftopic').remove();
-					$('#wpf-form-wrapper #wpf-post-create').remove();
-					$('#wpf-form-wrapper #wpf-reply-form-title').html( '<?php esc_html_e('You cannot reply to this topic.', 'learndash-wpforo');?>');
+					$('#add_wpftopic, .add_wpftopic').remove();
+					$('.wpf-form-wrapper .wpf-post-create, #wpf-form-wrapper #wpf-post-create').remove();
+					$('.wpf-form-wrapper .wpf-reply-form-title, #wpf-form-wrapper #wpf-reply-form-title').html( '<?php esc_html_e("You cannot reply to this topic.", "learndash-wpforo");?>');
 				})( jQuery );
 				</script>
 				<?php
