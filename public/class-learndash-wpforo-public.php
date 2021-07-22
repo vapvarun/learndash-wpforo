@@ -111,10 +111,10 @@ class Learndash_Wpforo_Public {
 			}
 
 			$ld_forum_info = get_option( 'ld_forum_' . $forumid );
-			$associated_courses = $ld_forum_info['ld_course_selector_dd'];
-			$allow_post = $ld_forum_info['ld_post_limit_access'];
-			$allow_forum_view = $ld_forum_info['ld_allow_forum_view'];
-			$message_without_access = $ld_forum_info['ld_message_without_access'];
+			$associated_courses = ( isset($ld_forum_info['ld_course_selector_dd'])) ? $ld_forum_info['ld_course_selector_dd'] : '';
+			$allow_post = ( isset($ld_forum_info['ld_post_limit_access'])) ? $ld_forum_info['ld_post_limit_access'] : '';
+			$allow_forum_view = ( isset($ld_forum_info['ld_allow_forum_view'])) ? $ld_forum_info['ld_allow_forum_view'] : '';
+			$message_without_access = ( isset($ld_forum_info['ld_message_without_access'])) ? $ld_forum_info['ld_message_without_access'] : '';
 
 			$has_access = true;
 			$user_id = get_current_user_id();
@@ -156,10 +156,10 @@ class Learndash_Wpforo_Public {
 			$forum = WPF()->current_object['forum'];			
 			$forumid = $forum['forumid'];
 			$ld_forum_info = get_option( 'ld_forum_' . $forumid );
-			$associated_courses = $ld_forum_info['ld_course_selector_dd'];
-			$allow_post = $ld_forum_info['ld_post_limit_access'];
-			$allow_forum_view = $ld_forum_info['ld_allow_forum_view'];
-			$message_without_access = $ld_forum_info['ld_message_without_access'];
+			$associated_courses = ( isset($ld_forum_info['ld_course_selector_dd'])) ? $ld_forum_info['ld_course_selector_dd'] : '';
+			$allow_post = ( isset($ld_forum_info['ld_post_limit_access'])) ? $ld_forum_info['ld_post_limit_access'] : '';
+			$allow_forum_view = ( isset($ld_forum_info['ld_allow_forum_view'])) ? $ld_forum_info['ld_allow_forum_view'] : '';
+			$message_without_access = ( isset($ld_forum_info['ld_message_without_access'])) ? $ld_forum_info['ld_message_without_access'] : '';
 
 			$topic_has_access = true;
 			$user_id = get_current_user_id();
