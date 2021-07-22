@@ -114,14 +114,17 @@ class Learndash_Wpforo_Admin {
 		
 		if ( isset($_GET['page']) && $_GET['page'] == 'wpforo-forums' && isset($_GET['action'])){
 			$courses = $this->ld_get_course_list();
-			$forumid = sanitize_text_field( $_GET['id'] );
+			$associated_courses = $limit_post_access = $allow_forum_view = $message_without_access = '';
+			if ( isset($_GET['id']) && $_GET['id'] != '' ) {
+				$forumid = sanitize_text_field( $_GET['id'] );				
+				$ld_forum_settings = get_option( 'ld_forum_' . $forumid);
+				$associated_courses     = $ld_forum_settings['ld_course_selector_dd'];
+				$limit_post_access      = $ld_forum_settings['ld_post_limit_access'];
+				$allow_forum_view       = $ld_forum_settings['ld_allow_forum_view'];
+				$message_without_access = ( $ld_forum_settings['ld_message_without_access'] != '') ? $ld_forum_settings['ld_message_without_access'] : __( 'This forum is restricted to members of the associated course(s).', 'learndash-bbpress' );
+			}
 
-			$ld_forum_settings = get_option( 'ld_forum_' . $forumid);
-
-			$associated_courses     = $ld_forum_settings['ld_course_selector_dd'];
-			$limit_post_access      = $ld_forum_settings['ld_post_limit_access'];
-			$allow_forum_view       = $ld_forum_settings['ld_allow_forum_view'];
-			$message_without_access = ( $ld_forum_settings['ld_message_without_access'] != '') ? $ld_forum_settings['ld_message_without_access'] : __( 'This forum is restricted to members of the associated course(s).', 'learndash-bbpress' );
+			
 			$selected = null;
 			?>
 			<div id="ldwpforo_course_selector-sortables" style="display:none;">
