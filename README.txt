@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/downloads/learndash-wpforo/
 Tags: comments, spam, wbcomdesigns
 Requires at least: 3.0.1
-Tested up to: 5.3.3
-Stable tag: 1.5
+Tested up to: 5.8.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,10 @@ Yes, you have inbuilt option to to link multiple courses.
 
 
 == Changelog ==
+
+= 1.6.0 =
+* Fixed #25 admin side warning
+
 = 1.5.0 =
 * Fixed #20 - Notices and 
 * Fixed #22 - Set table prifix dynamic. to get the forum lists
