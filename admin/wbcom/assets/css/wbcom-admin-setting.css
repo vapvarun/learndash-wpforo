@@ -77,7 +77,9 @@
 }
 
 #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a i {
+    font-family: "FontAwesome";
     font-size: 2em;
+    font-weight: 400;
 }
 
 #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a h4 {

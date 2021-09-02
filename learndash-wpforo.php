@@ -98,3 +98,15 @@ function run_learndash_wpforo() {
 
 }
 run_learndash_wpforo();
+
+/**
+ * redirect to plugin settings page after activated
+ */
+add_action( 'activated_plugin', 'ld_wpforo_activation_redirect_settings' );
+function ld_wpforo_activation_redirect_settings( $plugin ){
+
+	if( $plugin == plugin_basename( __FILE__ ) ) {
+		wp_redirect( admin_url( 'admin.php?page=learndash-wpforo' ) ) ;
+		exit;
+	}
+}
