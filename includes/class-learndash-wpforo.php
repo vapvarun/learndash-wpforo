@@ -119,6 +119,11 @@ class Learndash_Wpforo {
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/wbcom/wbcom-paid-plugin-settings.php';
+
+		/**
+		 * The class responsible for defining all actions that occur in the admin area.
+		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-learndash-wpforo-admin.php';
 
 		/**

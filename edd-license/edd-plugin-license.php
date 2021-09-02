@@ -7,7 +7,7 @@ define( 'EDD_LDWPF_STORE_URL', 'https://wbcomdesigns.com/' ); // you should use 
 define( 'EDD_LDWPF_ITEM_NAME', 'Learndash wpForo' ); // you should use your own CONSTANT name, and be sure to replace it throughout this file
 
 // the name of the settings page for the license input to be displayed
-define( 'EDD_LDWPF_PLUGIN_LICENSE_PAGE', 'learndash-wpforo' );
+define( 'EDD_LDWPF_PLUGIN_LICENSE_PAGE', 'wbcom-license-page' );
 
 if ( ! class_exists( 'EDD_LDWPF_Plugin_Updater' ) ) {
 		// load our custom updater.
@@ -33,6 +33,20 @@ function edd_LDWPF_plugin_updater() {
 }
 add_action( 'admin_init', 'edd_LDWPF_plugin_updater', 0 );
 
+function edd_wbcom_LDWPF_register_option() {
+	// creates our settings in the options table
+	register_setting( 'edd_wbcom_LDWPF_license', 'edd_wbcom_LDWPF_license_key', 'edd_LDWPF_sanitize_license' );
+}
+add_action( 'admin_init', 'edd_wbcom_LDWPF_register_option' );
+
+function edd_LDWPF_sanitize_license( $new ) {
+	$old = get_option( 'edd_wbcom_LDWPF_license_key' );
+	if ( $old && $old != $new ) {
+		delete_option( 'edd_wbcom_LDWPF_license_status' ); // new license has been entered, so must reactivate
+	}
+	return $new;
+}
+
 
 /************************************
  * the code below is just a standard
@@ -41,52 +55,55 @@ add_action( 'admin_init', 'edd_LDWPF_plugin_updater', 0 );
  */
  add_action( 'wbcom_add_plugin_license_code', 'edd_wbcom_LDWPF_license_page' );
 function edd_wbcom_LDWPF_license_page() {
-	   $license = get_option( 'edd_wbcom_LDWPF_license_key', true );
-		$status = get_option( 'edd_wbcom_LDWPF_license_status' );
+	$license     = get_option( 'edd_wbcom_LDWPF_license_key', true );
+	$status      = get_option( 'edd_wbcom_LDWPF_license_status' );
+	$plugin_data = get_plugin_data( LEARNDASH_WPFORO_PLUGIN_PATH . '/learndash-wpforo.php', $markup = true, $translate = true );
+
+	if ( $status !== false && $status == 'valid' ) {
+		$status_class = 'active';
+		$status_text  = 'Active';
+	} else {
+		$status_class = 'inactive';
+		$status_text  = 'Inactive';
+	}
 	?>
-	<table class="form-table">
+		<table class="form-table wb-license-form-table mobile-license-headings">
+			<thead>
+				<tr>
+					<th class="wb-product-th"><?php esc_html_e( 'Product', 'buddypress-profile-pro' ); ?></th>
+					<th class="wb-version-th"><?php esc_html_e( 'Version', 'buddypress-profile-pro' ); ?></th>
+					<th class="wb-key-th"><?php esc_html_e( 'Key', 'buddypress-profile-pro' ); ?></th>
+					<th class="wb-status-th"><?php esc_html_e( 'Status', 'buddypress-profile-pro' ); ?></th>
+					<th class="wb-action-th"><?php esc_html_e( 'Action', 'buddypress-profile-pro' ); ?></th>
+					<th></th>
+				</tr>
+			</thead>
+		</table>
 		<form method="post" action="options.php">
 			<?php settings_fields( 'edd_wbcom_LDWPF_license' ); ?>
-			<tbody>
+			<table class="form-table wb-license-form-table">
 				<tr>
-					<td>
-						<?php echo EDD_LDWPF_ITEM_NAME; ?>
-					</td>
-					<td>
-						<?php echo LEARNDASH_WPFORO_VERSION; ?>
-					</td>
-					<td>
-						<input id="edd_wbcom_LDWPF_license_key" name="edd_wbcom_LDWPF_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license, 'learndash-wpforo' ); ?>" />
-						<label class="description" for="edd_wbcom_LDWPF_license_key"><?php _e( 'Enter your license key', 'learndash-wpforo' ); ?></label>
-					</td>
-					<?php if ( false !== $license ) { ?>
-						<td>
-							<?php if ( $status !== false && $status == 'valid' ) { ?>
-								<span style="color:green;"><?php _e( 'active', 'learndash-wpforo' ); ?></span>
-								<?php
-									wp_nonce_field( 'edd_wbcom_LDWPF_nonce', 'edd_wbcom_LDWPF_nonce' );
-							} else {
-								wp_nonce_field( 'edd_wbcom_LDWPF_nonce', 'edd_wbcom_LDWPF_nonce' );
-								?>
-								<span style="color:red;"><?php _e( 'Inactive', 'learndash-wpforo' ); ?></span>																<?php } ?>
-						</td>
-						<?php if ( $status !== false && $status == 'valid' ) { ?>
-							<td>
-								<input type="submit" class="button-secondary" name="edd_license_deactivate" value="<?php _e( 'Deactivate License', 'learndash-wpforo' ); ?>"/>
-								<p class="description"><?php _e( 'Click for deactivate license.', 'learndash-wpforo' ); ?></p>
-							</td>
+					<td class="wb-plugin-name"><?php esc_attr_e( $plugin_data['Name'], 'buddypress-profile-pro' ); ?></td>
+					<td class="wb-plugin-version"><?php esc_attr_e( $plugin_data['Version'], 'buddypress-profile-pro' ); ?></td>
+					<td class="wb-plugin-license-key"><input id="edd_wbcom_LDWPF_license_key" name="edd_wbcom_LDWPF_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license, 'buddypress-profile-pro' ); ?>" /></td>
+					<td class="wb-license-status <?php echo $status_class; ?>"><?php esc_attr_e( $status_text, 'buddypress-profile-pro' ); ?></td>
+					<td class="wb-license-action">
+						<?php
+						if ( $status !== false && $status == 'valid' ) {
+							wp_nonce_field( 'edd_wbcom_LDWPF_nonce', 'edd_wbcom_LDWPF_nonce' );
+							?>
+							<input type="submit" class="button-secondary" name="edd_LDWPF_license_deactivate" value="<?php _e( 'Deactivate License', 'buddypress-profile-pro' ); ?>"/>
 							<?php
-						}
-					}
-					?>
-				<td>
-					<?php submit_button( __( 'Save Settings', 'learndash-wpforo' ), 'primary', 'edd_LDWPF_license_activate', true ); ?>
-				</td>
-		</tbody>
-			</form>
+						} else {
+							wp_nonce_field( 'edd_wbcom_LDWPF_nonce', 'edd_wbcom_LDWPF_nonce' );
+							?>
+							<input type="submit" class="button-secondary" name="edd_ldwpf_license_activate" value="<?php _e( 'Activate License', 'buddypress-profile-pro' ); ?>"/>
+						<?php } ?>
+					</td>
+				</tr>
+			</table>
+		</form>
 
-
-	</table>
 		<?php
 }
 
@@ -99,7 +116,7 @@ function edd_wbcom_LDWPF_license_page() {
 
 function edd_wbcom_LDWPF_activate_license() {
 		// listen for our activate button to be clicked
-	if ( isset( $_POST['edd_LDWPF_license_activate'] ) ) {
+	if ( isset( $_POST['edd_ldwpf_license_activate'] ) ) {
 			// run a quick security check
 		if ( ! check_admin_referer( 'edd_wbcom_LDWPF_nonce', 'edd_wbcom_LDWPF_nonce' ) ) {
 				return; // get out if we didn't click the Activate button
@@ -178,7 +195,6 @@ function edd_wbcom_LDWPF_activate_license() {
 				$base_url = admin_url( 'admin.php?page=' . EDD_LDWPF_PLUGIN_LICENSE_PAGE );
 				$redirect = add_query_arg(
 					array(
-						'tab'              => 'ld-forum-license',
 						'WPWFI_activation' => 'false',
 						'message'          => urlencode( $message ),
 					),

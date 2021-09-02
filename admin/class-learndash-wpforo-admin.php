@@ -139,8 +139,8 @@ class Learndash_Wpforo_Admin {
 		}
 		add_submenu_page(
 			'wbcomplugins',
-			esc_html__( 'Learndash wpForo License', 'learndash-wpforo' ),
-			esc_html__( 'Learndash wpForo License', 'learndash-wpforo' ),
+			esc_html__( 'Learndash wpForo', 'learndash-wpforo' ),
+			esc_html__( 'Learndash wpForo', 'learndash-wpforo' ),
 			'manage_options',
 			'learndash-wpforo',
 			array( $this, 'ldforo_admin_settings_page' )
@@ -192,9 +192,7 @@ class Learndash_Wpforo_Admin {
 	public function ld_forum_settings() {
 		$this->plugin_settings_tabs['learndash-wpforo-welcome'] = __( 'Welcome', 'learndash-wpforo' );
 		add_settings_section( 'learndash-wpforo-welcome-section', ' ', array( $this, 'ld_forum_admin_welcome_content' ), 'learndash-wpforo-welcome' );
-		$this->plugin_settings_tabs['ld-forum-license'] = __( 'License', 'learndash-wpforo' );
-		register_setting( 'edd_wbcom_LDWPF_license', 'edd_wbcom_LDWPF_license_key', array( $this, 'ld_forum_sanitize_license' ) );
-		add_settings_section( 'ld-forum-license-section', ' ', array( $this, 'ld_forum_admin_license_content' ), 'ld-forum-license' );
+
 		$this->plugin_settings_tabs['ld-forum-faq'] = __( 'FAQ', 'learndash-wpforo' );
 		add_settings_section( 'ld-forum-faq-section', ' ', array( $this, 'ld_forum_admin_faq_content' ), 'ld-forum-faq' );
 
@@ -211,21 +209,6 @@ class Learndash_Wpforo_Admin {
 		if ( file_exists( dirname( __FILE__ ) . '/partials/ld-wpforo-welcome-page.php' ) ) {
 			require_once dirname( __FILE__ ) . '/partials/ld-wpforo-welcome-page.php';
 		}
-	}
-
-	public function ld_forum_sanitize_license( $new ) {
-		$old = get_option( 'edd_wbcom_LDWPF_license_key' );
-		if ( $old && $old != $new ) {
-			delete_option( 'edd_wbcom_LDWPF_license_status' ); // new license has been entered, so must reactivate
-		}
-		return $new;
-	}
-
-	public function ld_forum_admin_license_content() {
-		if ( file_exists( dirname( __FILE__ ) . '/partials/ld-wpforo-license-page.php' ) ) {
-			require_once dirname( __FILE__ ) . '/partials/ld-wpforo-license-page.php';
-		}
-
 	}
 
 	public function ld_forum_admin_faq_content() {

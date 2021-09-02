@@ -51,6 +51,9 @@ if ( ! defined( 'LEARNDASH_WPFORO_URL' ) ) {
 if ( ! defined( 'LEARNDASH_WPFORO_DIR_PATH' ) ) {
 	define( 'LEARNDASH_WPFORO_DIR_PATH', plugin_dir_path( __FILE__ ) );
 }
+if ( ! defined( 'LEARNDASH_WPFORO_PLUGIN_PATH' ) ) {
+	define( 'LEARNDASH_WPFORO_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+}
 
 /**
  * The code that runs during plugin activation.

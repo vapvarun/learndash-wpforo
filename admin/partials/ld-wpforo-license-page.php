@@ -27,11 +27,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	// Exit if accessed directly.
 }
 ?>
-<?php
-$license = get_option( 'edd_wbcom_LDWPF_license_key', true );
-$status  = get_option( 'edd_wbcom_LDWPF_license_status' );
-?>
-
 <div class="wbcom-tab-content">
   <div class="wbcom-welcome-main-wrapper">
 	<div class="wb-plugins-license-tables-wrap">
@@ -46,7 +41,7 @@ $status  = get_option( 'edd_wbcom_LDWPF_license_status' );
 		  </tr>
 		</thead>
 	  </table>
-	  <?php do_action( 'wbcom_add_plugin_license_code' ); ?>
+	  <?php // do_action( 'wbcom_add_plugin_license_code' ); ?>
 	  <table class="form-table wb-license-form-table">
 		<tfoot>
 		  <tr>
