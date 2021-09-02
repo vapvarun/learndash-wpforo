@@ -14,3 +14,16 @@
 ?>
 
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
+<?php
+/**
+ * This file is used for rendering and saving plugin welcome settings.
+ *
+ * @package    Lms_Related_Courses
+ * @subpackage Lms_Related_Courses/admin/partials
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+	// Exit if accessed directly.
+}
+?>

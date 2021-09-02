@@ -114,6 +114,11 @@ class Learndash_Wpforo {
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/wbcom/wbcom-admin-settings.php';
+
+		/**
+		 * The class responsible for defining all actions that occur in the admin area.
+		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-learndash-wpforo-admin.php';
 
 		/**
@@ -155,13 +160,15 @@ class Learndash_Wpforo {
 		$plugin_admin = new Learndash_Wpforo_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );	
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'ldwpforo_activation_dependency_check' );	
-		$wpforo_foums = sanitize_title( __( 'Forums', 'wpforo' ) );		
-		//$this->loader->add_action( $wpforo_foums . '_page_wpforo-forums', $plugin_admin, 'ldwpforo_display_course_selector', 20 );	
-		$this->loader->add_action( 'admin_footer', $plugin_admin, 'ldwpforo_display_course_selector', 20 );	
-		//$this->loader->add_action( 'forums_page_wpforo-forums', $plugin_admin,'ldwpforo_display_course_selector', 20 );		
-		$this->loader->add_action( 'wpforo_clean_cache_start', $plugin_admin,'ldwpforo_add_edit_ldwpforo_settings', 20 );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'ldforo_admin_menu' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'ld_forum_settings' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'ldwpforo_activation_dependency_check' );
+		$wpforo_foums = sanitize_title( __( 'Forums', 'wpforo' ) );
+		// $this->loader->add_action( $wpforo_foums . '_page_wpforo-forums', $plugin_admin, 'ldwpforo_display_course_selector', 20 );
+		$this->loader->add_action( 'admin_footer', $plugin_admin, 'ldwpforo_display_course_selector', 20 );
+		// $this->loader->add_action( 'forums_page_wpforo-forums', $plugin_admin,'ldwpforo_display_course_selector', 20 );
+		$this->loader->add_action( 'wpforo_clean_cache_start', $plugin_admin, 'ldwpforo_add_edit_ldwpforo_settings', 20 );
 	}
 
 	/**
@@ -179,8 +186,8 @@ class Learndash_Wpforo {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_action( 'wpforo_wpftpl', $plugin_public, 'learndash_wpforo_wpftpl' );
 		$this->loader->add_action( 'wpforo_footer_hook', $plugin_public, 'learndash_wpforo_footer_hook' );
-		
-		$this->loader->add_action( 'widgets_init', $plugin_public, 'ld_include_widget_code' );		
+
+		$this->loader->add_action( 'widgets_init', $plugin_public, 'ld_include_widget_code' );
 	}
 
 	/**
