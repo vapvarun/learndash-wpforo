@@ -81,3 +81,9 @@ button.ld-wpforo-accordion.active::after {
         width: 25%;
     }
 }
+
+@media (max-width: 767px) {
+    .ld-wpforo-adming-setting {
+        width: 100%;
+    }
+}
