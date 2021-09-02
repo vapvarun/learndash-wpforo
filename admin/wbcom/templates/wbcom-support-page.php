@@ -1,10 +1,10 @@
 <div class="wrap">
 	<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
-	<h4 class="wbcom-plugin-heading"><?php esc_html_e( 'Support', 'buddypress-moderation-pro' ); ?></h4>
+	<h4 class="wbcom-plugin-heading"><?php esc_html_e( 'Support', 'learndash-wpforo' ); ?></h4>
     <div id="wbcom_admin_content_support" class="wbcom_admin_tab_content">
-        <strong><?php esc_html_e( 'Having any question or issue ?', 'buddypress-moderation-pro' ); ?></strong>
+        <strong><?php esc_html_e( 'Having any question or issue ?', 'learndash-wpforo' ); ?></strong>
         <p>
-			<?php esc_html_e( 'Our team is here to help you out at anytime. If you have any idea about how we could improve. You can share access to your site on our helpdesk if it can help getting faster. There are two ways to in touch with us :', 'buddypress-moderation-pro' ); ?></p>
+			<?php esc_html_e( 'Our team is here to help you out at anytime. If you have any idea about how we could improve. You can share access to your site on our helpdesk if it can help getting faster. There are two ways to in touch with us :', 'learndash-wpforo' ); ?></p>
 
         <ul id="wbcom_support_list" class="wbcom_boxes_list wp-clearfix">
 
@@ -16,12 +16,12 @@
                 </div>
                 <div class="wbcom_single_right">
                     <div class="wbcom_single_inner">
-                        <h4><?php esc_html_e( 'Tickets Support', 'buddypress-moderation-pro' ); ?></h4>
-                        <p><?php esc_html_e( 'Open a ticket on our helpdesk, we don\'t guarantee a fast response but within a week. Except if you\'ve purchased one of our product we\'ll reply within 24 hours.', 'buddypress-moderation-pro' ); ?></p>
+                        <h4><?php esc_html_e( 'Tickets Support', 'learndash-wpforo' ); ?></h4>
+                        <p><?php esc_html_e( 'Open a ticket on our helpdesk, we don\'t guarantee a fast response but within a week. Except if you\'ve purchased one of our product we\'ll reply within 24 hours.', 'learndash-wpforo' ); ?></p>
                         <div class="text-right">
                             <a href="https://support.wbcomdesigns.com/portal/newticket" class="wb_btn wb_btn_default" target="_blank">
                                 <i class="fa fa-ticket"></i>
-								<?php esc_html_e( 'Open a ticket', 'buddypress-moderation-pro' ); ?>
+								<?php esc_html_e( 'Open a ticket', 'learndash-wpforo' ); ?>
                             </a>
                         </div>
                     </div>
@@ -36,12 +36,12 @@
                 </div>
                 <div class="wbcom_single_right">
                     <div class="wbcom_single_inner">
-                        <h4><?php esc_html_e( 'Contact Us', 'buddypress-moderation-pro' ); ?></h4>
-                        <p><?php esc_html_e( 'Create a new thread on our plugin page, participation is open to anyone from all around the world. We\'ll be there to help as well but can\'t guarantee any delay.', 'buddypress-moderation-pro' ); ?></p>
+                        <h4><?php esc_html_e( 'Contact Us', 'learndash-wpforo' ); ?></h4>
+                        <p><?php esc_html_e( 'Create a new thread on our plugin page, participation is open to anyone from all around the world. We\'ll be there to help as well but can\'t guarantee any delay.', 'learndash-wpforo' ); ?></p>
                         <div class="text-right">
                             <a href="https://wbcomdesigns.com/contact/" class="wb_btn wb_btn_default" target="_blank">
                                 <i class="fa fa-phone-square"></i>
-								<?php esc_html_e( 'Contact Us', 'buddypress-moderation-pro' ); ?>
+								<?php esc_html_e( 'Contact Us', 'learndash-wpforo' ); ?>
                             </a>
                         </div>
                     </div>

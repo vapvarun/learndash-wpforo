@@ -38,11 +38,11 @@ $status  = get_option( 'edd_wbcom_LDWPF_license_status' );
 	  <table class="form-table wb-license-form-table desktop-license-headings">
 		<thead>
 		  <tr>
-			<th class="wb-product-th"><?php esc_html_e( 'Product', 'buddypress-moderation-pro' ); ?></th>
-			<th class="wb-version-th"><?php esc_html_e( 'Version', 'buddypress-moderation-pro' ); ?></th>
-			<th class="wb-key-th"><?php esc_html_e( 'Key', 'buddypress-moderation-pro' ); ?></th>
-			<th class="wb-status-th"><?php esc_html_e( 'Status', 'buddypress-moderation-pro' ); ?></th>
-			<th class="wb-action-th"><?php esc_html_e( 'Action', 'buddypress-moderation-pro' ); ?></th>
+			<th class="wb-product-th"><?php esc_html_e( 'Product', 'learndash-wpforo' ); ?></th>
+			<th class="wb-version-th"><?php esc_html_e( 'Version', 'learndash-wpforo' ); ?></th>
+			<th class="wb-key-th"><?php esc_html_e( 'Key', 'learndash-wpforo' ); ?></th>
+			<th class="wb-status-th"><?php esc_html_e( 'Status', 'learndash-wpforo' ); ?></th>
+			<th class="wb-action-th"><?php esc_html_e( 'Action', 'learndash-wpforo' ); ?></th>
 		  </tr>
 		</thead>
 	  </table>
@@ -50,11 +50,11 @@ $status  = get_option( 'edd_wbcom_LDWPF_license_status' );
 	  <table class="form-table wb-license-form-table">
 		<tfoot>
 		  <tr>
-			<th class="wb-product-th"><?php esc_html_e( 'Product', 'buddypress-moderation-pro' ); ?></th>
-			<th class="wb-version-th"><?php esc_html_e( 'Version', 'buddypress-moderation-pro' ); ?></th>
-			<th class="wb-key-th"><?php esc_html_e( 'Key', 'buddypress-moderation-pro' ); ?></th>
-			<th class="wb-status-th"><?php esc_html_e( 'Status', 'buddypress-moderation-pro' ); ?></th>
-			<th class="wb-action-th"><?php esc_html_e( 'Action', 'buddypress-moderation-pro' ); ?></th>
+			<th class="wb-product-th"><?php esc_html_e( 'Product', 'learndash-wpforo' ); ?></th>
+			<th class="wb-version-th"><?php esc_html_e( 'Version', 'learndash-wpforo' ); ?></th>
+			<th class="wb-key-th"><?php esc_html_e( 'Key', 'learndash-wpforo' ); ?></th>
+			<th class="wb-status-th"><?php esc_html_e( 'Status', 'learndash-wpforo' ); ?></th>
+			<th class="wb-action-th"><?php esc_html_e( 'Action', 'learndash-wpforo' ); ?></th>
 		  </tr>
 		</tfoot>
 	  </table>

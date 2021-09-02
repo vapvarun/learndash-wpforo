@@ -26,7 +26,7 @@ if ( !class_exists( 'Wbcom_Paid_Plugin_Settings' ) ) {
 
 		public function wbcom_admin_license_page() {
 			add_submenu_page(
-			'wbcomplugins', esc_html__( 'License', 'buddypress-moderation-pro' ), esc_html__( 'License', 'buddypress-moderation-pro' ), 'manage_options', 'wbcom-license-page', array( $this, 'wbcom_license_submenu_page_callback' )
+			'wbcomplugins', esc_html__( 'License', 'learndash-wpforo' ), esc_html__( 'License', 'learndash-wpforo' ), 'manage_options', 'wbcom-license-page', array( $this, 'wbcom_license_submenu_page_callback' )
 			);
 		}
 
@@ -34,13 +34,13 @@ if ( !class_exists( 'Wbcom_Paid_Plugin_Settings' ) ) {
 			include 'templates/wbcom-license-page.php';
 		}
 
-		public function wbcom_add_header_license_menu() { 
+		public function wbcom_add_header_license_menu() {
 			$license_page_active = filter_input( INPUT_GET, 'page' ) == 'wbcom-license-page' ? 'is_active' : '';
 			?>
 			<li class="wb_admin_nav_item <?php echo esc_attr( $license_page_active ); ?>">
 				<a href="<?php echo get_admin_url() . 'admin.php?page=wbcom-license-page'; ?>" id="wb_admin_nav_trigger_support">
 					<i class="fa fa-wpforms" aria-hidden="true"></i>
-					<h4><?php esc_html_e( 'License', 'buddypress-moderation-pro' ); ?></h4>
+					<h4><?php esc_html_e( 'License', 'learndash-wpforo' ); ?></h4>
 				</a>
 			</li><?php
 		}
