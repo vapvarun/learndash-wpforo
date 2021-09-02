@@ -546,16 +546,16 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 		public function wbcom_admin_additional_pages() {
 			add_submenu_page(
 				'wbcomplugins',
-				esc_html__( 'Components', 'learndash-wpforo' ),
-				esc_html__( 'Components', 'learndash-wpforo' ),
+				esc_html__( 'Our Plugins', 'learndash-wpforo' ),
+				esc_html__( 'Our Plugins', 'learndash-wpforo' ),
 				'manage_options',
 				'wbcom-plugins-page',
 				array( $this, 'wbcom_plugins_submenu_page_callback' )
 			);
 			add_submenu_page(
 				'wbcomplugins',
-				esc_html__( 'Themes', 'learndash-wpforo' ),
-				esc_html__( 'Themes', 'learndash-wpforo' ),
+				esc_html__( 'Our Themes', 'learndash-wpforo' ),
+				esc_html__( 'Our Themes', 'learndash-wpforo' ),
 				'manage_options',
 				'wbcom-themes-page',
 				array( $this, 'wbcom_themes_submenu_page_callback' )
@@ -644,13 +644,13 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 						<li class="wb_admin_nav_item <?php echo esc_attr( $plugin_active ); ?>">
 							<a href="<?php echo get_admin_url() . 'admin.php?page=wbcom-plugins-page'; ?>" id="wb_admin_nav_trigger_extensions">
 								<i class="fa fa-th" aria-hidden="true"></i>
-								<h4><?php esc_html_e( 'Components', 'learndash-wpforo' ); ?></h4>
+								<h4><?php esc_html_e( 'Our Plugins', 'learndash-wpforo' ); ?></h4>
 							</a>
 						</li>
 						<li class="wb_admin_nav_item <?php echo esc_attr( $theme_active ); ?>">
 							<a href="<?php echo get_admin_url() . 'admin.php?page=wbcom-themes-page'; ?>" id="wb_admin_nav_trigger_themes">
 								<i class="fa fa-magic" aria-hidden="true"></i>
-								<h4><?php esc_html_e( 'Themes', 'learndash-wpforo' ); ?></h4>
+								<h4><?php esc_html_e( 'Our Themes', 'learndash-wpforo' ); ?></h4>
 							</a>
 						</li>
 						<li class="wb_admin_nav_item <?php echo esc_attr( $support_active ); ?>">
