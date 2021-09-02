@@ -70,11 +70,11 @@ function edd_wbcom_LDWPF_license_page() {
 		<table class="form-table wb-license-form-table mobile-license-headings">
 			<thead>
 				<tr>
-					<th class="wb-product-th"><?php esc_html_e( 'Product', 'buddypress-profile-pro' ); ?></th>
-					<th class="wb-version-th"><?php esc_html_e( 'Version', 'buddypress-profile-pro' ); ?></th>
-					<th class="wb-key-th"><?php esc_html_e( 'Key', 'buddypress-profile-pro' ); ?></th>
-					<th class="wb-status-th"><?php esc_html_e( 'Status', 'buddypress-profile-pro' ); ?></th>
-					<th class="wb-action-th"><?php esc_html_e( 'Action', 'buddypress-profile-pro' ); ?></th>
+					<th class="wb-product-th"><?php esc_html_e( 'Product', 'learndash-wpforo' ); ?></th>
+					<th class="wb-version-th"><?php esc_html_e( 'Version', 'learndash-wpforo' ); ?></th>
+					<th class="wb-key-th"><?php esc_html_e( 'Key', 'learndash-wpforo' ); ?></th>
+					<th class="wb-status-th"><?php esc_html_e( 'Status', 'learndash-wpforo' ); ?></th>
+					<th class="wb-action-th"><?php esc_html_e( 'Action', 'learndash-wpforo' ); ?></th>
 					<th></th>
 				</tr>
 			</thead>
@@ -83,21 +83,21 @@ function edd_wbcom_LDWPF_license_page() {
 			<?php settings_fields( 'edd_wbcom_LDWPF_license' ); ?>
 			<table class="form-table wb-license-form-table">
 				<tr>
-					<td class="wb-plugin-name"><?php esc_attr_e( $plugin_data['Name'], 'buddypress-profile-pro' ); ?></td>
-					<td class="wb-plugin-version"><?php esc_attr_e( $plugin_data['Version'], 'buddypress-profile-pro' ); ?></td>
-					<td class="wb-plugin-license-key"><input id="edd_wbcom_LDWPF_license_key" name="edd_wbcom_LDWPF_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license, 'buddypress-profile-pro' ); ?>" /></td>
-					<td class="wb-license-status <?php echo $status_class; ?>"><?php esc_attr_e( $status_text, 'buddypress-profile-pro' ); ?></td>
+					<td class="wb-plugin-name"><?php esc_attr_e( $plugin_data['Name'], 'learndash-wpforo' ); ?></td>
+					<td class="wb-plugin-version"><?php esc_attr_e( $plugin_data['Version'], 'learndash-wpforo' ); ?></td>
+					<td class="wb-plugin-license-key"><input id="edd_wbcom_LDWPF_license_key" name="edd_wbcom_LDWPF_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license, 'learndash-wpforo' ); ?>" /></td>
+					<td class="wb-license-status <?php echo $status_class; ?>"><?php esc_attr_e( $status_text, 'learndash-wpforo' ); ?></td>
 					<td class="wb-license-action">
 						<?php
 						if ( $status !== false && $status == 'valid' ) {
 							wp_nonce_field( 'edd_wbcom_LDWPF_nonce', 'edd_wbcom_LDWPF_nonce' );
 							?>
-							<input type="submit" class="button-secondary" name="edd_LDWPF_license_deactivate" value="<?php _e( 'Deactivate License', 'buddypress-profile-pro' ); ?>"/>
+							<input type="submit" class="button-secondary" name="edd_LDWPF_license_deactivate" value="<?php _e( 'Deactivate License', 'learndash-wpforo' ); ?>"/>
 							<?php
 						} else {
 							wp_nonce_field( 'edd_wbcom_LDWPF_nonce', 'edd_wbcom_LDWPF_nonce' );
 							?>
-							<input type="submit" class="button-secondary" name="edd_ldwpf_license_activate" value="<?php _e( 'Activate License', 'buddypress-profile-pro' ); ?>"/>
+							<input type="submit" class="button-secondary" name="edd_ldwpf_license_activate" value="<?php _e( 'Activate License', 'learndash-wpforo' ); ?>"/>
 						<?php } ?>
 					</td>
 				</tr>

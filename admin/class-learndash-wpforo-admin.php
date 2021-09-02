@@ -107,7 +107,7 @@ class Learndash_Wpforo_Admin {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/learndash-wpforo-admin.js', array( 'jquery' ), $this->version, false );
 
-		$wpforo_foums    = sanitize_title( __( 'Forums', 'wpforo' ) );
+		$wpforo_foums    = sanitize_title( __( 'Forums', 'learndash-wpforo' ) );
 		$locale_settings = array(
 			'wpforo_foums_body_class' => $wpforo_foums . '_page_wpforo-forums',
 		);
@@ -230,7 +230,7 @@ class Learndash_Wpforo_Admin {
 				$associated_courses     = $ld_forum_settings['ld_course_selector_dd'];
 				$limit_post_access      = $ld_forum_settings['ld_post_limit_access'];
 				$allow_forum_view       = $ld_forum_settings['ld_allow_forum_view'];
-				$message_without_access = ( $ld_forum_settings['ld_message_without_access'] != '' ) ? $ld_forum_settings['ld_message_without_access'] : __( 'This forum is restricted to members of the associated course(s).', 'learndash-bbpress' );
+				$message_without_access = ( $ld_forum_settings['ld_message_without_access'] != '' ) ? $ld_forum_settings['ld_message_without_access'] : __( 'This forum is restricted to members of the associated course(s).', 'learndash-wpforo' );
 			}
 
 			$selected = null;
