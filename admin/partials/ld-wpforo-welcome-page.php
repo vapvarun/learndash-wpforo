@@ -48,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<div class="col">
 						<h3><span class="dashicons dashicons-book"></span><?php esc_html_e( 'Documentation', 'learndash-wpforo' ); ?></h3>
 						<p><?php esc_html_e( 'We have prepared an extensive guide on Learndash wpForo to learn all aspects of the plugin. You will find most of your answers here.', 'learndash-wpforo' ); ?></p>
-						<a href="<?php echo esc_url( '#' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'learndash-wpforo' ); ?></a>
+						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/downloads/learndash-wpforo/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'learndash-wpforo' ); ?></a>
 					</div>
 
 					<div class="col">
