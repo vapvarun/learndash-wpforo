@@ -227,10 +227,10 @@ class Learndash_Wpforo_Admin {
 			if ( isset( $_GET['id'] ) && $_GET['id'] != '' ) {
 				$forumid                = sanitize_text_field( $_GET['id'] );
 				$ld_forum_settings      = get_option( 'ld_forum_' . $forumid );
-				$associated_courses     = $ld_forum_settings['ld_course_selector_dd'];
-				$limit_post_access      = $ld_forum_settings['ld_post_limit_access'];
-				$allow_forum_view       = $ld_forum_settings['ld_allow_forum_view'];
-				$message_without_access = ( $ld_forum_settings['ld_message_without_access'] != '' ) ? $ld_forum_settings['ld_message_without_access'] : __( 'This forum is restricted to members of the associated course(s).', 'learndash-wpforo' );
+				$associated_courses     = isset( $ld_forum_settings['ld_course_selector_dd'] ) ? $ld_forum_settings['ld_course_selector_dd'] : '';
+				$limit_post_access      = isset( $ld_forum_settings['ld_post_limit_access'] ) ? $ld_forum_settings['ld_post_limit_access'] : '';
+				$allow_forum_view       = isset( $ld_forum_settings['ld_allow_forum_view'] ) ? $ld_forum_settings['ld_allow_forum_view'] : '';
+				$message_without_access = isset( $ld_forum_settings['ld_message_without_access'] ) ? $ld_forum_settings['ld_message_without_access'] : 'This forum is restricted to members of the associated course(s).';
 			}
 
 			$selected = null;
