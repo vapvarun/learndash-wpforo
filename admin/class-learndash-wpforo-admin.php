@@ -357,30 +357,4 @@ class Learndash_Wpforo_Admin {
 		$courses = get_posts( $args );
 		return $courses;
 	}
-	/*
-	 * Check learndash & wpForo Plugin Dependency Check
-	 *
-	 * @since      1.0.0
-	 */
-	public function ldwpforo_activation_dependency_check() {
-		// check if wpForo is active
-		$is_wpforo_active = is_plugin_active( 'wpforo/wpforo.php' );
-
-		// check if learndash is active
-		$is_learndash_active = is_plugin_active( 'sfwd-lms/sfwd_lms.php' );
-
-		if ( ! $is_wpforo_active || ! $is_learndash_active ) {
-			deactivate_plugins( 'learndash-wpforo/learndash-wpforo.php' );
-			add_action( 'admin_notices', array( $this, 'ldwpforo_ctivation_dependency_check_notices' ) );
-		}
-	}
-
-	/*
-	 * Display admin notice for activate wpforo and LearnDash plugin to use this plugin
-	 *
-	 * @since      1.0.0
-	 */
-	public function ldwpforo_ctivation_dependency_check_notices() {
-		echo "<div class='notice notice-error'><p>" . esc_html__( 'Please activate wpForo & Learndash plugins before activation Learndash wpForo integration.', 'learndash-wpforo' ) . '</p></div>';
-	}
 }
