@@ -101,12 +101,12 @@ add_action( 'plugins_loaded', 'learndash_wpforo_check_required_plugin' );
  * Display required plugin admin notice.
  */
 function learndash_wpforo_admin_notice() {
-	$learndash_wpforo_plugin = __( 'Learndash wpForo', 'buddypress-ads-rotator' );
-	$learndash_plugin        = __( 'Learndash', 'buddypress-ads-rotator' );
-	$wpforo_plugin           = __( 'wpForo', 'buddypress-ads-rotator' );
+	$learndash_wpforo_plugin = __( 'Learndash wpForo', 'learndash-wpforo' );
+	$learndash_plugin        = __( 'Learndash', 'learndash-wpforo' );
+	$wpforo_plugin           = __( 'wpForo', 'learndash-wpforo' );
 	echo '<div class="error"><p>'
 	/* translators: %1$s: BuddyPress Ads ;  %2$s: BuddyPress*/
-	. sprintf( esc_html__( '%1$s is ineffective as it requires %2$s and %3$s to be installed and active.', 'buddypress-ads-rotator' ), '<strong>' . esc_attr( $learndash_wpforo_plugin ) . '</strong>', '<strong>' . esc_attr( $learndash_plugin ) . '</strong>', '<strong>' . esc_attr( $wpforo_plugin ) . '</strong>' )
+	. sprintf( esc_html__( '%1$s is ineffective as it requires %2$s and %3$s to be installed and active.', 'learndash-wpforo' ), '<strong>' . esc_attr( $learndash_wpforo_plugin ) . '</strong>', '<strong>' . esc_attr( $learndash_plugin ) . '</strong>', '<strong>' . esc_attr( $wpforo_plugin ) . '</strong>' )
 	. '</p></div>';
 	if ( null !== filter_input( INPUT_GET, 'activate' ) ) {
 		$activate = filter_input( INPUT_GET, 'activate' );
@@ -146,5 +146,3 @@ function run_learndash_wpforo() {
 
 }
 run_learndash_wpforo();
-
-
