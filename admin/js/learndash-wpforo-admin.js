@@ -1,4 +1,4 @@
-(function( $ ) {
+(function ($) {
 	'use strict';
 
 	/**
@@ -28,20 +28,20 @@
 	 * Although scripts in the WordPress core, Plugins and Themes may be
 	 * practising this, we should strive to set a better example in our own work.
 	 */
-	 
-	$( document ).ready(function() {
+
+	$(document).ready(function () {
 		var ldwpforo_settings = $('#ldwpforo_course_selector-sortables').html();
-		if ( typeof ldwpforo_settings !== 'undefined' ) {
+		if (typeof ldwpforo_settings !== 'undefined') {
 			var wpforo_class = learndashwpforo.wpforo_foums_body_class;
-			var wpforo_class = adminpage ;
+			var wpforo_class = adminpage;
 			$('body.' + wpforo_class + ' #postbox-container-2 #normal-sortables').append(ldwpforo_settings);
 			$('#ldwpforo_course_selector-sortables').hide();
 		}
 	});
-        
-        // Support tab
-	$( document ).ready( function(){
-		var acc = document.getElementsByClassName("ld-wpforo-accordion");
+
+	// Support tab
+	$(document).ready(function () {
+		var acc = document.getElementsByClassName("wbcom-faq-accordion");
 		var i;
 		for (i = 0; i < acc.length; i++) {
 			acc[i].onclick = function () {
@@ -55,11 +55,11 @@
 			}
 		}
 		$(document).on(
-			'click', '.ld-wpforo-accordion', function () {
+			'click', '.wbcom-faq-accordion', function () {
 				return false;
 			}
 		);
 
 	});
 
-})( jQuery );
+})(jQuery);

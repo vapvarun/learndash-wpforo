@@ -26,15 +26,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<div class="wbcom-tab-content">
-	<div class="ld-wpforo-adming-setting">
-		<div class="ld-wpforo-tab-header"><h3><?php esc_html_e( 'FAQ(s)', 'learndash-wpforo' ); ?></h3></div>
-		<div class="ld-wpforo-admin-settings-block">
-			<div id="ld-wpforo-settings-tbl">
-				<div class="ld-wpforo-admin-row">
-					<div>
-						<button class="ld-wpforo-accordion"><?php esc_html_e( 'How to Assign Courses to a forum?', 'learndash-wpforo' ); ?></button>
-						<div class="panel">
+<div class="wbcom-tab-content">      
+<div class="wbcom-faq-adming-setting">
+	<div class="wbcom-admin-title-section">
+		<h3><?php esc_html_e( 'FAQ(s)', 'learndash-wpforo' ); ?></h3>
+	   </div>
+	   <div class="wbcom-faq-admin-settings-block">
+		  <div id="wbcom-faq-settings-section" class="wbcom-faq-table">
+			<div class="wbcom-faq-section-row">
+				<div class="wbcom-faq-admin-row">
+						<button class="wbcom-faq-accordion"><?php esc_html_e( 'How to Assign Courses to a forum?', 'learndash-wpforo' ); ?></button>
+						<div class="wbcom-faq-panel">
 							<p>
 							<?php
 							esc_html_e(
@@ -46,18 +48,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 					</div>
 				</div>
-				<div class="ld-wpforo-admin-row">
-					<div>
-						<button class="ld-wpforo-accordion"><?php esc_html_e( 'Can I associate more than one course in a forum?', 'learndash-wpforo' ); ?></button>
-						<div class="panel">
+				<div class="wbcom-faq-section-row">
+					<div class="wbcom-faq-admin-row">
+						<button class="wbcom-faq-accordion"><?php esc_html_e( 'Can I associate more than one course in a forum?', 'learndash-wpforo' ); ?></button>
+						<div class="wbcom-faq-panel">
 							<p><?php esc_html_e( 'Yes! Off course you can associate more than one course in a single forum.', 'learndash-wpforo' ); ?></p>
 						</div>
 					</div>
 				</div>
-				<div class="ld-wpforo-admin-row">
-					<div>
-						<button class="ld-wpforo-accordion"><?php esc_html_e( 'How does the forum restriction work?', 'learndash-wpforo' ); ?></button>
-						<div class="panel">
+				<div class="wbcom-faq-section-row">
+					<div class="wbcom-faq-admin-row">
+						<button class="wbcom-faq-accordion"><?php esc_html_e( 'How does the forum restriction work?', 'learndash-wpforo' ); ?></button>
+						<div class="wbcom-faq-panel">
 							<p>
 							<?php
 							esc_html_e(
@@ -69,10 +71,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 					</div>
 				</div>
-				<div class="ld-wpforo-admin-row">
-					<div>
-						<button class="ld-wpforo-accordion"><?php esc_html_e( 'Differentiate between All and Any access limit restriction?', 'learndash-wpforo' ); ?></button>
-						<div class="panel">
+				<div class="wbcom-faq-section-row">
+					 <div class="wbcom-faq-admin-row">
+						<button class="wbcom-faq-accordion"><?php esc_html_e( 'Differentiate between All and Any access limit restriction?', 'learndash-wpforo' ); ?></button>
+						<div class="wbcom-faq-panel">
 							<ul>
 								<li>
 									<p>
@@ -99,10 +101,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 					</div>
 				</div>
-				<div class="ld-wpforo-admin-row">
-					<div>
-						<button class="ld-wpforo-accordion"><?php esc_html_e( 'How to show customized forum restriction notice  to the users?', 'learndash-wpforo' ); ?></button>
-						<div class="panel">
+				<div class="wbcom-faq-section-row">
+					 <div class="wbcom-faq-admin-row">
+						<button class="wbcom-faq-accordion"><?php esc_html_e( 'How to show customized forum restriction notice  to the users?', 'learndash-wpforo' ); ?></button>
+						<div class="wbcom-faq-panel">
 								<p>
 								<?php
 								esc_html_e(
@@ -114,10 +116,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 					</div>
 				</div>
-				<div class="ld-wpforo-admin-row">
-					<div>
-						<button class="ld-wpforo-accordion"><?php esc_html_e( 'How does the Forum View setting work?', 'learndash-wpforo' ); ?></button>
-						<div class="panel">
+				<div class="wbcom-faq-section-row">
+					<div class="wbcom-faq-admin-row">
+						<button class="wbcom-faq-accordion"><?php esc_html_e( 'How does the Forum View setting work?', 'learndash-wpforo' ); ?></button>
+						<div class="wbcom-faq-panel">
 								<p>
 								<?php
 								esc_html_e(
@@ -129,10 +131,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 					</div>
 				</div>
-				<div class="ld-wpforo-admin-row">
-					<div>
-						<button class="ld-wpforo-accordion"><?php esc_html_e( 'Can I display associated forums on a single course page?', 'learndash-wpforo' ); ?></button>
-						<div class="panel">
+				<div class="wbcom-faq-section-row">
+					<div class="wbcom-faq-admin-row">
+						<button class="wbcom-faq-accordion"><?php esc_html_e( 'Can I display associated forums on a single course page?', 'learndash-wpforo' ); ?></button>
+						<div class="wbcom-faq-panel">
 								<p>
 								<?php
 								esc_html_e(
@@ -144,10 +146,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</div>
 					</div>
 				</div>
-				<div class="ld-wpforo-admin-row">
-					<div>
-						<button class="ld-wpforo-accordion"><?php esc_html_e( 'How to display associated forums on a single course page?', 'learndash-wpforo' ); ?></button>
-						<div class="panel">
+				<div class="wbcom-faq-section-row">
+					<div class="wbcom-faq-admin-row">
+						<button class="wbcom-faq-accordion"><?php esc_html_e( 'How to display associated forums on a single course page?', 'learndash-wpforo' ); ?></button>
+						<div class="wbcom-faq-panel">
 								<p>
 								<?php
 								esc_html_e(

@@ -85,7 +85,6 @@ class Learndash_Wpforo_Admin {
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/learndash-wpforo-admin.css', array(), $this->version, 'all' );
 
 	}
-
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
@@ -113,6 +112,15 @@ class Learndash_Wpforo_Admin {
 		);
 		wp_localize_script( $this->plugin_name, 'learndashwpforo', $locale_settings );
 
+	}
+
+	public function wbcom_hide_all_admin_notices_from_setting_page() {
+		$wbcom_pages_array  = array( 'wbcomplugins', 'wbcom-plugins-page', 'wbcom-support-page', 'learndash-wpforo' );
+		$wbcom_setting_page = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
+		if ( in_array( $wbcom_setting_page, $wbcom_pages_array, true ) ) {
+			remove_all_actions( 'admin_notices' );
+			remove_all_actions( 'all_admin_notices' );
+		}
 	}
 
 
@@ -152,13 +160,22 @@ class Learndash_Wpforo_Admin {
 		$tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'learndash-wpforo-welcome';
 		?>
 		<div class="wrap">
-			<hr class="wp-header-end">
+		    <div class="wbcom-bb-plugins-offer-wrapper">
+				<div id="wb_admin_logo">
+					<a href="https://wbcomdesigns.com/downloads/buddypress-community-bundle/" target="_blank">
+						<img src="<?php echo esc_url( LEARNDASH_WPFORO_URL ) . 'admin/wbcom/assets/imgs/wbcom-offer-notice.png'; ?>">
+					</a>
+				</div>
+			</div>
 			<div class="wbcom-wrap">
-				<div class="lrc-header">
-					<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
-					<h1 class="wbcom-plugin-heading">
-						<?php esc_html_e( 'Learndash wpForo', 'learndash-wpforo' ); ?>
-					</h1>
+			<div class="blpro-header">
+					<div class="wbcom_admin_header-wrapper">
+						<div id="wb_admin_plugin_name">
+							<?php esc_html_e( 'Learndash wpForo', 'learndash-wpforo' ); ?>
+							<span><?php printf( __( 'Version %s', 'learndash-wpforo' ), LEARNDASH_WPFORO_VERSION ); ?></span>
+						</div>
+						<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
+					</div>
 				</div>
 				<?php settings_errors(); ?>
 				<div class="wbcom-admin-settings-page">
