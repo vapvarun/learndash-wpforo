@@ -160,7 +160,7 @@ class Learndash_Wpforo_Admin {
 		$tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'learndash-wpforo-welcome';
 		?>
 		<div class="wrap">
-		    <div class="wbcom-bb-plugins-offer-wrapper">
+			<div class="wbcom-bb-plugins-offer-wrapper">
 				<div id="wb_admin_logo">
 					<a href="https://wbcomdesigns.com/downloads/buddypress-community-bundle/" target="_blank">
 						<img src="<?php echo esc_url( LEARNDASH_WPFORO_URL ) . 'admin/wbcom/assets/imgs/wbcom-offer-notice.png'; ?>">
@@ -194,7 +194,7 @@ class Learndash_Wpforo_Admin {
 		echo '<div class="wbcom-tabs-section"><div class="nav-tab-wrapper"><div class="wb-responsive-menu"><span>' . esc_html( 'Menu' ) . '</span><input class="wb-toggle-btn" type="checkbox" id="wb-toggle-btn"><label class="wb-toggle-icon" for="wb-toggle-btn"><span class="wb-icon-bars"></span></label></div><ul>';
 		foreach ( $this->plugin_settings_tabs as $tab_key => $tab_caption ) {
 			$active = $current_tab === $tab_key ? 'nav-tab-active' : '';
-			echo '<li><a class="nav-tab ' . esc_attr( $active ) . '" href="?page=' . esc_attr( $this->plugin_slug ) . '&tab=' . esc_attr( $tab_key ) . '">' . esc_html__( $tab_caption, 'learndash-wpforo' ) . '</a></li>';
+			echo '<li class="' . $tab_key . '"><a class="nav-tab ' . esc_attr( $active ) . '" href="?page=' . esc_attr( $this->plugin_slug ) . '&tab=' . esc_attr( $tab_key ) . '">' . esc_html__( $tab_caption, 'learndash-wpforo' ) . '</a></li>';
 		}
 		echo '</div></ul></div>';
 	}

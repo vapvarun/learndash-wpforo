@@ -3,6 +3,14 @@
     width: 90%;
 }
 
+.wbcom-wrap .notice.notice-error.is-dismissible.learndash-license-is-dismissible {
+    display: none !important;
+}
+
+.nav-tab-wrapper ul li.ld-forum-faq a.nav-tab:before {
+    content: '\f125';
+}
+
 button.ld-wpforo-accordion {
     background-color: hsl(0, 0%, 87%);
     border: medium none;

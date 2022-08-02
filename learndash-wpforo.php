@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Learndash wpForo
  * Plugin URI:        https://wbcomdesigns.com
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Using forums on your e-learning website will increase the engagement of your learners with your courses. All you need is the integration of wpForo Forum and Learndash wpForo.
  * Version:           1.7.0
  * Author:            wbcomdesigns
  * Author URI:        https://wbcomdesigns.com/plugins
