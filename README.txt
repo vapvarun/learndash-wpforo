@@ -4,7 +4,7 @@ Donate link: https://wbcomdesigns.com/downloads/learndash-wpforo/
 Tags: comments, spam, wbcomdesigns
 Requires at least: 3.0.1
 Tested up to: 5.9.3
-Stable tag: 1.7.0
+Stable tag: 1.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,9 @@ Yes, you have inbuilt option to to link multiple courses.
 
 
 == Changelog ==
+= 1.7.1 =
+* Fixed: Update admin wrapper UI
+
 = 1.7.0 =
 * Fixed: (#34) Changed admin documentation link 
 * Fixed: (#32) Fixed warning display when edit forum on the adminn
