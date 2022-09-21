@@ -87,12 +87,13 @@ require plugin_dir_path( __FILE__ ) . 'edd-license/edd-plugin-license.php';
  * This Function checks the required plugin.
  */
 function learndash_wpforo_check_required_plugin() {
-	if ( ! class_exists( 'wpForo' ) || ! class_exists( 'SFWD_LMS' ) ) {
-		require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		deactivate_plugins( plugin_basename( __FILE__ ) );
-		add_action( 'admin_notices', 'learndash_wpforo_admin_notice' );
-	} else {
+	$active_plugins = get_option( 'active_plugins' );
+	if ( in_array( 'wpforo/wpforo.php', $active_plugins ) && in_array( 'sfwd-lms/sfwd_lms.php', $active_plugins ) ) {
 		register_activation_hook( __FILE__, 'activate_learndash_wpforo' );
+	} else {
+		require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		add_action( 'admin_notices', 'learndash_wpforo_admin_notice' );
+		deactivate_plugins( plugin_basename( __FILE__ ) );
 	}
 }
 add_action( 'plugins_loaded', 'learndash_wpforo_check_required_plugin' );
