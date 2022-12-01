@@ -39,7 +39,7 @@ div.panel {
     max-height: max-content;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    margin: 0px 5%;
+    margin: 0px;
 }
 
 button.ld-wpforo-accordion::after {
