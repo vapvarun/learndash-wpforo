@@ -111,11 +111,70 @@ div.updated {
     }
 }
 
-/* 
-.wp-core-ui .notice.is-dismissible {
+
+#ldwpforo_course_settings #ldwpforo_course_selector h2.hndle.ui-sortable-handle {
+    border-bottom: 1px solid #ddd;
+}
+#ldwpforo_course_settings #ldwpforo_course_selector .handlediv {
     position: absolute;
-    right: 50px;
-    z-index: 99;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#ldwpforo_course_settings #ldwpforo_course_selector .handlediv:before,
+#ldwpforo_course_settings div#ldwpforo_course_selector.postbox.closed .handlediv:before{
+    content: "\f342";
+    font-family: dashicons;
+    font-size: 18px;
+}
+#ldwpforo_course_settings div#ldwpforo_course_selector.postbox.closed .handlediv:before{
+    content: "\f346";
+}
+#ldwpforo_course_settings select[name="ld_forum[ld_course_selector_dd][]"]#ld_course_selector_dd {
+    height: 160px;
+    padding: 15px;
+    background: #f0f0f1;
     border-radius: 10px;
-    display: none;
-} */
+    margin: 10px 0;
+    border: none !important;
+    width: 70%;
+}
+#ldwpforo_course_settings select[name="ld_forum[ld_course_selector_dd][]"]#ld_course_selector_dd::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 10px;
+}
+#ldwpforo_course_settings select[name="ld_forum[ld_course_selector_dd][]"]#ld_course_selector_dd::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+#ldwpforo_course_settings select[name="ld_forum[ld_course_selector_dd][]"]#ld_course_selector_dd::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+#ldwpforo_course_settings select[name="ld_forum[ld_course_selector_dd][]"]#ld_course_selector_dd::-webkit-scrollbar-thumb:hover {
+  background: #555;
+  border-radius: 10px;
+}
+#ldwpforo_course_settings #ld_course_selector_dd optgroup[label="Select Courses"] option {
+    padding: 5px 0;
+    border-radius: 6px;
+}
+#ldwpforo_course_settings select#ld_course_selector_dd option:checked {
+    padding: 5px 10px;
+    margin-top: 2px;
+}
+#ldwpforo_course_settings a#ld_clearcourse {
+    background: red;
+    color: #fff;
+    border: none;
+    padding: 5px 30px;
+    font-weight: 500;
+    border-radius: 8px;
+}
+#ldwpforo_course_settings textarea[name="ld_forum[ld_message_without_access]"] {
+    border-radius: 10px;
+    width: 70%;
+    padding: 10px;
+    margin-top: 5px;
+}
