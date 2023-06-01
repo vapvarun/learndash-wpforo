@@ -337,8 +337,7 @@ class Learndash_Wpforo_Admin {
 	 *
 	 */
 	public function ldwpforo_add_edit_ldwpforo_settings() {
-
-		if ( isset( $_REQUEST['page'] ) && isset( $_REQUEST['action'] ) && isset( $_REQUEST['id'] ) && isset( $_REQUEST['ld_forum'] ) ) {
+		if ( isset( $_REQUEST['page'] ) && isset( $_REQUEST['action'] ) && isset( $_REQUEST['ld_forum'] ) ) {
 
 			/* wpForo forum ADD OR EDIT action */
 			$page     = sanitize_text_field( $_REQUEST['page'] );
@@ -347,7 +346,13 @@ class Learndash_Wpforo_Admin {
 			$ld_forum = filter_var_array( $_REQUEST['ld_forum'], FILTER_SANITIZE_STRING );
 
 			if ( isset( $page ) && $page == 'wpforo-forums' && ( isset( $action ) && ( $action == 'edit' || $action == 'add' ) ) ) {
-				$forumid = ( isset( $id ) ) ? $id : WPF()->db->insert_id;
+				if( 'edit' == $action ){
+					$forumid = $id;
+				}elseif( 'add' == $action ){
+					global $wpdb;
+					$forum_table = $wpdb->prefix . 'wpforo_forums';
+					$forumid = $wpdb->get_var( $wpdb->prepare( "SELECT forumid from $forum_table ORDER BY forumid DESC LIMIT 1" ) );
+				}
 				if ( $forumid != '' && $forumid != 0 ) {
 					update_option( 'ld_forum_' . $forumid, $ld_forum );
 				}
