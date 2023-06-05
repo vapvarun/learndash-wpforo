@@ -81,7 +81,7 @@ class Learndash_Wpforo_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
+		wp_enqueue_style( 'selectize', plugin_dir_url( __FILE__ ) . 'css/selectize.css', array(), $this->version, 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/learndash-wpforo-admin.css', array(), $this->version, 'all' );
 
 	}
@@ -105,7 +105,7 @@ class Learndash_Wpforo_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/learndash-wpforo-admin.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script( 'selectize', plugin_dir_url( __FILE__ ) . 'js/selectize.min.js', array( 'jquery' ), $this->version, false );
 		$wpforo_foums    = sanitize_title( __( 'Forums', 'learndash-wpforo' ) );
 		$locale_settings = array(
 			'wpforo_foums_body_class' => $wpforo_foums . '_page_wpforo-forums',
@@ -258,17 +258,6 @@ class Learndash_Wpforo_Admin {
 						<div class="handlediv" title="Click to toggle"><br></div>
 						<h2 class="hndle ui-sortable-handle"><span><?php _e( 'LearnDash wpForo Settings', 'learndash-wpforo' ); ?></span></h2>
 						<div class="inside">
-							<script>
-								jQuery( document ).ready( function( $ ){
-									$( '#ld_clearcourse' ).click( function( e ) {
-										e.preventDefault();
-										$( "#ld_course_selector_dd option:selected" ).each( function() {
-												$( this ).removeAttr( 'selected' ); //or whatever else
-										} );
-									} );
-								});
-							</script>
-
 							<table class="form-table">
 								<tbody>
 								<tr>
@@ -292,8 +281,6 @@ class Learndash_Wpforo_Admin {
 										?>
 										</optgroup>
 									</select>
-									<br>
-									<a href="" id="ld_clearcourse" class="button" style="margin-top: 10px;"><?php _e( 'Clear All', 'learndash-wpforo' ); ?></a>
 								</td>
 								</tr>
 								<tr>
