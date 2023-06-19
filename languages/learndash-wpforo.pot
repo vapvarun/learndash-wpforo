@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-08 09:57:59+00:00\n"
+"POT-Creation-Date: 2023-06-19 16:11:13+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,51 +64,47 @@ msgstr ""
 msgid "LearnDash wpForo Settings"
 msgstr ""
 
-#: admin/class-learndash-wpforo-admin.php:276
+#: admin/class-learndash-wpforo-admin.php:265
 msgid "Associated Course(s)"
 msgstr ""
 
-#: admin/class-learndash-wpforo-admin.php:279
+#: admin/class-learndash-wpforo-admin.php:268
 msgid "Select Courses"
 msgstr ""
 
-#: admin/class-learndash-wpforo-admin.php:296
-msgid "Clear All"
-msgstr ""
-
-#: admin/class-learndash-wpforo-admin.php:301
+#: admin/class-learndash-wpforo-admin.php:288
 msgid "Post Limit Access"
 msgstr ""
 
-#: admin/class-learndash-wpforo-admin.php:303
+#: admin/class-learndash-wpforo-admin.php:290
 msgid "All"
 msgstr ""
 
-#: admin/class-learndash-wpforo-admin.php:304
+#: admin/class-learndash-wpforo-admin.php:291
 msgid "Any"
 msgstr ""
 
-#: admin/class-learndash-wpforo-admin.php:306
+#: admin/class-learndash-wpforo-admin.php:293
 msgid ""
 "If you select ALL, then users must have access to all of the associated "
 "courses in order to post."
 msgstr ""
 
-#: admin/class-learndash-wpforo-admin.php:307
+#: admin/class-learndash-wpforo-admin.php:294
 msgid ""
 "If you select ANY, then users only need to have access to any one of the "
 "selected courses in order to post."
 msgstr ""
 
-#: admin/class-learndash-wpforo-admin.php:312
+#: admin/class-learndash-wpforo-admin.php:299
 msgid "Message shown to users without access"
 msgstr ""
 
-#: admin/class-learndash-wpforo-admin.php:319
+#: admin/class-learndash-wpforo-admin.php:306
 msgid "Forum View"
 msgstr ""
 
-#: admin/class-learndash-wpforo-admin.php:322
+#: admin/class-learndash-wpforo-admin.php:309
 msgid ""
 "Check this box to allow non-enrolled users to view forum threads and topics "
 "(they will not be able to post replies)."
@@ -216,7 +212,7 @@ msgstr ""
 #: admin/partials/ld-wpforo-license-page.php:48
 #: admin/wbcom/templates/wbcom-license-page.php:24
 #: admin/wbcom/templates/wbcom-license-page.php:36
-#: edd-license/edd-plugin-license.php:73
+#: edd-license/edd-plugin-license.php:78
 msgid "Product"
 msgstr ""
 
@@ -224,7 +220,7 @@ msgstr ""
 #: admin/partials/ld-wpforo-license-page.php:49
 #: admin/wbcom/templates/wbcom-license-page.php:25
 #: admin/wbcom/templates/wbcom-license-page.php:37
-#: edd-license/edd-plugin-license.php:74
+#: edd-license/edd-plugin-license.php:79
 msgid "Version"
 msgstr ""
 
@@ -232,7 +228,7 @@ msgstr ""
 #: admin/partials/ld-wpforo-license-page.php:50
 #: admin/wbcom/templates/wbcom-license-page.php:26
 #: admin/wbcom/templates/wbcom-license-page.php:38
-#: edd-license/edd-plugin-license.php:75
+#: edd-license/edd-plugin-license.php:80
 msgid "Key"
 msgstr ""
 
@@ -240,7 +236,7 @@ msgstr ""
 #: admin/partials/ld-wpforo-license-page.php:51
 #: admin/wbcom/templates/wbcom-license-page.php:27
 #: admin/wbcom/templates/wbcom-license-page.php:39
-#: edd-license/edd-plugin-license.php:76
+#: edd-license/edd-plugin-license.php:81
 msgid "Status"
 msgstr ""
 
@@ -248,7 +244,7 @@ msgstr ""
 #: admin/partials/ld-wpforo-license-page.php:52
 #: admin/wbcom/templates/wbcom-license-page.php:28
 #: admin/wbcom/templates/wbcom-license-page.php:40
-#: edd-license/edd-plugin-license.php:77
+#: edd-license/edd-plugin-license.php:82
 msgid "Action"
 msgstr ""
 
@@ -865,42 +861,51 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:95
+#: edd-license/edd-plugin-license.php:100
 msgid "Deactivate License"
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:100
+#: edd-license/edd-plugin-license.php:105
 msgid "Activate License"
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:151
-#: edd-license/edd-plugin-license.php:187
-#: edd-license/edd-plugin-license.php:260
+#: edd-license/edd-plugin-license.php:156
+#: edd-license/edd-plugin-license.php:192
+#: edd-license/edd-plugin-license.php:267
 msgid "An error occurred, please try again."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:160
+#: edd-license/edd-plugin-license.php:165
 msgid "Your license key expired on %s."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:166
+#: edd-license/edd-plugin-license.php:171
 msgid "Your license key has been disabled."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:170
+#: edd-license/edd-plugin-license.php:175
 msgid "Invalid license."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:175
+#: edd-license/edd-plugin-license.php:180
 msgid "Your license is not active for this URL."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:179
+#: edd-license/edd-plugin-license.php:184
 msgid "This appears to be an invalid license key for %s."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:183
+#: edd-license/edd-plugin-license.php:188
 msgid "Your license key has reached its activation limit."
+msgstr ""
+
+#: edd-license/edd-plugin-license.php:368
+#. translators: %1$s: Expire Time
+msgid "Your Learndash wpForo plugin license key expired on %s."
+msgstr ""
+
+#: edd-license/edd-plugin-license.php:398
+msgid "Please activate your Learndash wpForo plugin license key."
 msgstr ""
 
 #: learndash-wpforo.php:106
