@@ -4,7 +4,7 @@ Donate link: https://wbcomdesigns.com/downloads/learndash-wpforo/
 Tags: comments, spam, wbcomdesigns
 Requires at least: 3.0.1
 Tested up to: 5.9.3
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,15 @@ Yes, you have inbuilt option to to link multiple courses.
 
 
 == Changelog ==
+= 1.7.3 =
+* Fix: (#37) Course students are not able to access forums
+* Fix: (#41) Distort WooCommerce order backend UI
+* Fix: Set Only Inactive when the license key deactivates
+* Fix: (#38) Distort the WooCommerce product edit screen UI
+* Fix: (#40) Conflict with WooCommerce order screen
+* Managed: (#42) Admin-associated course select box UI
+* Added: (#43) Course search feature
+
 = 1.7.2 =
 * Fixed: (#35) Fixed plugin not activate
 * Enhance: Added compatibility with wpForo latest version
