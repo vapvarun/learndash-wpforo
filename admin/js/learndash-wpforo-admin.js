@@ -59,7 +59,10 @@
 				return false;
 			}
 		);
-
+		$("#ld_course_selector_dd").selectize({
+			placeholder: $("#ld_course_selector_dd").data("placeholder"),
+			plugins: ["remove_button"],
+    	});
 	});
 
 })(jQuery);

@@ -81,7 +81,7 @@ class Learndash_Wpforo_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
+		wp_enqueue_style( 'selectize', plugin_dir_url( __FILE__ ) . 'css/selectize.css', array(), $this->version, 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/learndash-wpforo-admin.css', array(), $this->version, 'all' );
 
 	}
@@ -105,7 +105,7 @@ class Learndash_Wpforo_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/learndash-wpforo-admin.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script( 'selectize', plugin_dir_url( __FILE__ ) . 'js/selectize.min.js', array( 'jquery' ), $this->version, false );
 		$wpforo_foums    = sanitize_title( __( 'Forums', 'learndash-wpforo' ) );
 		$locale_settings = array(
 			'wpforo_foums_body_class' => $wpforo_foums . '_page_wpforo-forums',
@@ -258,17 +258,6 @@ class Learndash_Wpforo_Admin {
 						<div class="handlediv" title="Click to toggle"><br></div>
 						<h2 class="hndle ui-sortable-handle"><span><?php _e( 'LearnDash wpForo Settings', 'learndash-wpforo' ); ?></span></h2>
 						<div class="inside">
-							<script>
-								jQuery( document ).ready( function( $ ){
-									$( '#ld_clearcourse' ).click( function( e ) {
-										e.preventDefault();
-										$( "#ld_course_selector_dd option:selected" ).each( function() {
-												$( this ).removeAttr( 'selected' ); //or whatever else
-										} );
-									} );
-								});
-							</script>
-
 							<table class="form-table">
 								<tbody>
 								<tr>
@@ -292,8 +281,6 @@ class Learndash_Wpforo_Admin {
 										?>
 										</optgroup>
 									</select>
-									<br>
-									<a href="" id="ld_clearcourse" class="button" style="margin-top: 10px;"><?php _e( 'Clear All', 'learndash-wpforo' ); ?></a>
 								</td>
 								</tr>
 								<tr>
@@ -337,8 +324,7 @@ class Learndash_Wpforo_Admin {
 	 *
 	 */
 	public function ldwpforo_add_edit_ldwpforo_settings() {
-
-		if ( isset( $_REQUEST['page'] ) && isset( $_REQUEST['action'] ) && isset( $_REQUEST['id'] ) && isset( $_REQUEST['ld_forum'] ) ) {
+		if ( isset( $_REQUEST['page'] ) && isset( $_REQUEST['action'] ) && isset( $_REQUEST['ld_forum'] ) ) {
 
 			/* wpForo forum ADD OR EDIT action */
 			$page     = sanitize_text_field( $_REQUEST['page'] );
@@ -347,7 +333,13 @@ class Learndash_Wpforo_Admin {
 			$ld_forum = filter_var_array( $_REQUEST['ld_forum'], FILTER_SANITIZE_STRING );
 
 			if ( isset( $page ) && $page == 'wpforo-forums' && ( isset( $action ) && ( $action == 'edit' || $action == 'add' ) ) ) {
-				$forumid = ( isset( $id ) ) ? $id : WPF()->db->insert_id;
+				if( 'edit' == $action ){
+					$forumid = $id;
+				}elseif( 'add' == $action ){
+					global $wpdb;
+					$forum_table = $wpdb->prefix . 'wpforo_forums';
+					$forumid = $wpdb->get_var( $wpdb->prepare( "SELECT forumid from $forum_table ORDER BY forumid DESC LIMIT 1" ) );
+				}
 				if ( $forumid != '' && $forumid != 0 ) {
 					update_option( 'ld_forum_' . $forumid, $ld_forum );
 				}
