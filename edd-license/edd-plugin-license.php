@@ -59,15 +59,15 @@ function edd_wbcom_LDWPF_license_page() {
 	$status      = get_option( 'edd_wbcom_LDWPF_license_status' );
 	$plugin_data = get_plugin_data( LEARNDASH_WPFORO_PLUGIN_PATH . '/learndash-wpforo.php', $markup = true, $translate = true );
 
-	$license_data 		= get_transient("edd_wbcom_LDWPF_license_key_data");
-	
-	if ( false !== $status && 'valid' === $status  && !empty($license_data) && $license_data->license == 'valid') {
+	$license_data = get_transient( 'edd_wbcom_LDWPF_license_key_data' );
+
+	if ( false !== $status && 'valid' === $status && ! empty( $license_data ) && $license_data->license == 'valid' ) {
 		$status_class = 'active';
 		$status_text  = 'Active';
-	} else if ( !empty($license_data) && $license_data->license != '' && $license_data->license != 'site_inactive' ) {
+	} elseif ( ! empty( $license_data ) && $license_data->license != '' && $license_data->license != 'site_inactive' ) {
 		$status_class = 'expired';
-		$status_text  = ucfirst(str_replace('_',' ',$license_data->license));
-	}else {
+		$status_text  = ucfirst( str_replace( '_', ' ', $license_data->license ) );
+	} else {
 		$status_class = 'inactive';
 		$status_text  = 'Inactive';
 	}
@@ -192,8 +192,8 @@ function edd_wbcom_LDWPF_activate_license() {
 						$message = __( 'An error occurred, please try again.', 'learndash-wpforo' );
 						break;
 				}
-			}else {
-				set_transient("edd_wbcom_LDWPF_license_key_data", $license_data, 12 * HOUR_IN_SECONDS);
+			} else {
+				set_transient( 'edd_wbcom_LDWPF_license_key_data', $license_data, 12 * HOUR_IN_SECONDS );
 			}
 		}
 
@@ -232,7 +232,7 @@ add_action( 'admin_init', 'edd_wbcom_LDWPF_activate_license' );
 
 function edd_wbcom_LDWPF_deactivate_license() {
 		// listen for our activate button to be clicked
-	if ( isset( $_POST['edd_license_deactivate'] ) ) {
+	if ( isset( $_POST['edd_LDWPF_license_deactivate'] ) ) {
 			// run a quick security check
 		if ( ! check_admin_referer( 'edd_wbcom_LDWPF_nonce', 'edd_wbcom_LDWPF_nonce' ) ) {
 				return; // get out if we didn't click the Activate button
@@ -282,7 +282,7 @@ function edd_wbcom_LDWPF_deactivate_license() {
 
 		// decode the license data
 		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
-		delete_transient("edd_wbcom_LDWPF_license_key_data");
+		delete_transient( 'edd_wbcom_LDWPF_license_key_data' );
 		// $license_data->license will be either "deactivated" or "failed"
 		if ( $license_data->license == 'deactivated' ) {
 				delete_option( 'edd_wbcom_LDWPF_license_status' );
@@ -306,13 +306,12 @@ add_action( 'admin_init', 'edd_wbcom_LDWPF_check_license' );
 function edd_wbcom_LDWPF_check_license() {
 	global $wp_version, $pagenow;
 
-	
-	if ( $pagenow === 'plugins.php' || $pagenow === 'index.php' || ( isset($_GET['page']) && $_GET['page'] === 'wbcom-license-page') ) {
-		
-		$license_data = get_transient("edd_wbcom_LDWPF_license_key_data");	
-		$license = trim( get_option( 'edd_wbcom_LDWPF_license_key' ) );
-		
-		if( empty($license_data) && $license != '' ) {
+	if ( $pagenow === 'plugins.php' || $pagenow === 'index.php' || ( isset( $_GET['page'] ) && $_GET['page'] === 'wbcom-license-page' ) ) {
+
+		$license_data = get_transient( 'edd_wbcom_LDWPF_license_key_data' );
+		$license      = trim( get_option( 'edd_wbcom_LDWPF_license_key' ) );
+
+		if ( empty( $license_data ) && $license != '' ) {
 
 			$api_params = array(
 				'edd_action' => 'check_license',
@@ -337,8 +336,8 @@ function edd_wbcom_LDWPF_check_license() {
 
 			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
-			if(!empty($license_data)) {
-				set_transient("edd_wbcom_LDWPF_license_key_data", $license_data, 12 * HOUR_IN_SECONDS);
+			if ( ! empty( $license_data ) ) {
+				set_transient( 'edd_wbcom_LDWPF_license_key_data', $license_data, 12 * HOUR_IN_SECONDS );
 			}
 		}
 	}
@@ -350,10 +349,10 @@ function edd_wbcom_LDWPF_check_license() {
 function edd_wbcom_LDWPF_admin_notices() {
 	$license_activation = filter_input( INPUT_GET, 'WPWFI_activation' ) ? filter_input( INPUT_GET, 'WPWFI_activation' ) : '';
 	$error_message      = filter_input( INPUT_GET, 'message' ) ? filter_input( INPUT_GET, 'message' ) : '';
-	$license_data 		= get_transient("edd_wbcom_LDWPF_license_key_data");
-	$license 			= trim( get_option( 'edd_wbcom_LDWPF_license_key' ) );
-	
-	if ( isset( $license_activation ) && ! empty( $error_message ) || ( !empty($license_data) && $license_data->license == 'expired' )) {
+	$license_data       = get_transient( 'edd_wbcom_LDWPF_license_key_data' );
+	$license            = trim( get_option( 'edd_wbcom_LDWPF_license_key' ) );
+
+	if ( isset( $license_activation ) && ! empty( $error_message ) || ( ! empty( $license_data ) && $license_data->license == 'expired' ) ) {
 		if ( $license_activation === '' ) {
 			$license_activation = $license_data->license;
 		}
@@ -362,17 +361,17 @@ function edd_wbcom_LDWPF_admin_notices() {
 				?>
 				<div class="notice notice-error is-dismissible">
 				<p>
-				<?php 
+				<?php
 				echo $message = sprintf(
 							/* translators: %1$s: Expire Time*/
-							__( 'Your Learndash wpForo plugin license key expired on %s.', 'learndash-wpforo' ),
-							date_i18n( get_option( 'date_format' ), strtotime( $license_data->expires, current_time( 'timestamp' ) ) )
-						);
+					__( 'Your Learndash wpForo plugin license key expired on %s.', 'learndash-wpforo' ),
+					date_i18n( get_option( 'date_format' ), strtotime( $license_data->expires, current_time( 'timestamp' ) ) )
+				);
 				?>
 				</p>
 				</div>
 				<?php
-					
+
 				break;
 			case 'false':
 				$message = urldecode( $error_message );
@@ -389,12 +388,12 @@ function edd_wbcom_LDWPF_admin_notices() {
 				break;
 		}
 	}
-	
+
 	if ( $license === '' ) {
 		?>
 		<div class="notice notice-error is-dismissible">
 			<p>
-			<?php 
+			<?php
 			echo esc_html__( 'Please activate your Learndash wpForo plugin license key.', 'learndash-wpforo' );
 			?>
 			</p>			
