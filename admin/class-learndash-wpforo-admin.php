@@ -364,11 +364,9 @@ class Learndash_Wpforo_Admin {
 			}
 			$page = 'wpforo-' . $board_obj_val['boardid'] . '-forums';
 			if ( isset( $_GET['page'] ) && $_GET['page'] == $page && isset( $_GET['action'] ) ) {
-				$myfile = file_put_contents( ABSPATH . 'wp-content/plugins/logs.php', print_r( $_GET, true ) . PHP_EOL, FILE_APPEND | LOCK_EX );
 				$courses            = $this->ld_get_course_list();
 				$associated_courses = $limit_post_access = $allow_forum_view = $message_without_access = '';
 				if ( $board_obj_val['boardid'] != '' ) {
-					$myfile = file_put_contents( ABSPATH . 'wp-content/plugins/logs.php', print_r( $_GET, true ) . PHP_EOL, FILE_APPEND | LOCK_EX );
 					$ld_board_forum_settings    = get_option( 'ld_board_forum_' . $board_obj_val['boardid'] . '_' . $_GET['id'] );
 					$associated_courses         = isset( $ld_board_forum_settings['ld_course_selector_dd'] ) ? $ld_board_forum_settings['ld_course_selector_dd'] : '';
 					$limit_post_access          = isset( $ld_board_forum_settings['ld_post_limit_access'] ) ? $ld_board_forum_settings['ld_post_limit_access'] : '';
