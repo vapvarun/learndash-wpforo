@@ -174,6 +174,8 @@ class Learndash_Wpforo {
 		// $this->loader->add_action( 'forums_page_wpforo-forums', $plugin_admin,'ldwpforo_display_course_selector', 20 );
 		$this->loader->add_action( 'wpforo_clean_cache_start', $plugin_admin, 'ldwpforo_add_edit_ldwpforo_settings', 20 );
 		 $this->loader->add_action( 'admin_init', $plugin_admin, 'wbcom_hide_all_admin_notices_from_setting_page' );
+		 $this->loader->add_action( 'admin_footer', $plugin_admin, 'wpforo_course_integrate_in_board' );
+		 $this->loader->add_action( 'wpforo_clean_cache_start', $plugin_admin, 'wpforo_board_forum_course_setting_save', 20 );
 	}
 
 	/**
