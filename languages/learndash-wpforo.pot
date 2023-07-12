@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-19 16:11:13+00:00\n"
+"POT-Creation-Date: 2023-07-12 06:59:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -61,50 +61,61 @@ msgid "FAQ"
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:259
+#: admin/class-learndash-wpforo-admin.php:387
 msgid "LearnDash wpForo Settings"
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:265
+#: admin/class-learndash-wpforo-admin.php:393
 msgid "Associated Course(s)"
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:268
+#: admin/class-learndash-wpforo-admin.php:396
 msgid "Select Courses"
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:288
+#: admin/class-learndash-wpforo-admin.php:416
 msgid "Post Limit Access"
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:290
+#: admin/class-learndash-wpforo-admin.php:418
 msgid "All"
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:291
+#: admin/class-learndash-wpforo-admin.php:419
 msgid "Any"
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:293
+#: admin/class-learndash-wpforo-admin.php:421
 msgid ""
 "If you select ALL, then users must have access to all of the associated "
 "courses in order to post."
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:294
+#: admin/class-learndash-wpforo-admin.php:422
 msgid ""
 "If you select ANY, then users only need to have access to any one of the "
 "selected courses in order to post."
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:299
+#: admin/class-learndash-wpforo-admin.php:427
 msgid "Message shown to users without access"
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:306
+#: admin/class-learndash-wpforo-admin.php:434
 msgid "Forum View"
 msgstr ""
 
 #: admin/class-learndash-wpforo-admin.php:309
+#: admin/class-learndash-wpforo-admin.php:437
 msgid ""
 "Check this box to allow non-enrolled users to view forum threads and topics "
 "(they will not be able to post replies)."
@@ -899,12 +910,12 @@ msgstr ""
 msgid "Your license key has reached its activation limit."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:368
+#: edd-license/edd-plugin-license.php:367
 #. translators: %1$s: Expire Time
 msgid "Your Learndash wpForo plugin license key expired on %s."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:398
+#: edd-license/edd-plugin-license.php:397
 msgid "Please activate your Learndash wpForo plugin license key."
 msgstr ""
 
@@ -929,6 +940,11 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: public/class-learndash-wpforo-public.php:194
+#: public/class-learndash-wpforo-public.php:195
+#: public/class-learndash-wpforo-public.php:301
 msgid "You cannot reply to this topic."
+msgstr ""
+
+#: wpf-themes/topic-without-access.php:24
+msgid "This forum is restricted to members of the associated course(S)."
 msgstr ""
