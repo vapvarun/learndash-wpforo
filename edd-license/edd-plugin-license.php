@@ -284,7 +284,7 @@ function edd_wbcom_LDWPF_deactivate_license() {
 		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 		delete_transient( 'edd_wbcom_LDWPF_license_key_data' );
 		// $license_data->license will be either "deactivated" or "failed"
-		if ( $license_data->license == 'deactivated' ) {
+		if ( $license_data->license == 'deactivated' || 'failed' === $license_data->license ) {
 				delete_option( 'edd_wbcom_LDWPF_license_status' );
 		}
 
