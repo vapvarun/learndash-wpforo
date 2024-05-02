@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com/downloads/learndash-wpforo/
 Tags: comments, spam, wbcomdesigns
 Requires at least: 3.0.1
-Tested up to: 5.9.3
-Stable tag: 1.7.5
+Tested up to: 6.5.2
+Stable tag: 1.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,6 +45,9 @@ Yes, you have inbuilt option to to link multiple courses.
 
 
 == Changelog ==
+= 1.7.6 =
+* Fix: The license does not deactivate if the response is failed.
+
 = 1.7.5 =
 * Fix: (#45) Warning on Board
 * Fix: Fatal Error when wpForo is not activated
